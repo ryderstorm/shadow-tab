@@ -1,0 +1,7 @@
+apiVersion: identity.chainguard.dev/v1alpha1
+kind: WorkloadIdentity
+metadata:
+  name: main-semantic-release
+spec:
+  subject_pattern: "repo:ryderstorm/dark-homepage-newtab:ref:refs/heads/main"
+

@@ -81,7 +81,7 @@
 - [x] 2.14 Create test branch and test PR to verify CI workflow runs successfully
 - [x] 2.15 Verify both "Run Tests" and "Run Linting" jobs pass on test PR
 
-### [ ] 3.0 Semantic Release Automation
+### [x] 3.0 Semantic Release Automation
 
 #### 3.0 Proof Artifact(s)
 
@@ -93,26 +93,26 @@
 
 #### 3.0 Tasks
 
-- [ ] 3.1 Create `.releaserc.toml` file with semantic release configuration
-- [ ] 3.2 Configure tag_format as "v{version}" and allow_zero_version as true
-- [ ] 3.3 Configure version_variables to include "manifest.json:version" for automatic version updates
-- [ ] 3.4 Configure changelog settings with changelog_file as "CHANGELOG.md" and output_format as "md"
-- [ ] 3.5 Configure branches section with main branch matching
-- [ ] 3.6 Configure remote section to use GH_TOKEN from environment variable
-- [ ] 3.7 Set commit_message template with [skip ci] flag to prevent CI re-triggering
-- [ ] 3.8 Create `.github/workflows/release.yml` workflow file
-- [ ] 3.9 Configure release workflow to trigger on workflow_run completion of CI workflow on main branch
-- [ ] 3.10 Add Chainguard Octo STS authentication step with identity "main-semantic-release"
-- [ ] 3.11 Configure git author as octo-sts[bot] with proper email format
-- [ ] 3.12 Set up Python 3.12 and install python-semantic-release>=10.0.0,<11.0.0
-- [ ] 3.13 Add semantic-release command step with .releaserc.toml configuration
-- [ ] 3.14 Create `.github/chainguard/` directory
-- [ ] 3.15 Create `.github/chainguard/main-semantic-release.sts.yaml` file with subject_pattern for repository
-- [ ] 3.16 Update subject_pattern in STS config to match repository path (ryderstorm/dark-homepage-newtab)
-- [ ] 3.17 Reset manifest.json version from "1.0.0" to "0.1.0" to align with semantic-release initial version
-- [ ] 3.18 Delete any existing git tags if present (for clean semantic-release start)
-- [ ] 3.19 Remove CHANGELOG.md if it exists (semantic-release will generate it)
-- [ ] 3.20 Test semantic release by creating test commit with feat: prefix and verifying version bump (after CI setup is complete)
+- [x] 3.1 Create `.releaserc.toml` file with semantic release configuration
+- [x] 3.2 Configure tag_format as "v{version}" and allow_zero_version as true
+- [x] 3.3 Configure version_variables to include "manifest.json:version" for automatic version updates
+- [x] 3.4 Configure changelog settings with changelog_file as "CHANGELOG.md" and output_format as "md"
+- [x] 3.5 Configure branches section with main branch matching
+- [x] 3.6 Configure remote section to use GH_TOKEN from environment variable
+- [x] 3.7 Set commit_message template with [skip ci] flag to prevent CI re-triggering
+- [x] 3.8 Create `.github/workflows/release.yml` workflow file
+- [x] 3.9 Configure release workflow to trigger on workflow_run completion of CI workflow on main branch
+- [x] 3.10 Add Chainguard Octo STS authentication step with identity "main-semantic-release"
+- [x] 3.11 Configure git author as octo-sts[bot] with proper email format
+- [x] 3.12 Set up Python 3.12 and install python-semantic-release>=10.0.0,<11.0.0
+- [x] 3.13 Add semantic-release command step with .releaserc.toml configuration
+- [x] 3.14 Create `.github/chainguard/` directory
+- [x] 3.15 Create `.github/chainguard/main-semantic-release.sts.yaml` file with subject_pattern for repository
+- [x] 3.16 Update subject_pattern in STS config to match repository path (ryderstorm/dark-homepage-newtab)
+- [x] 3.17 Reset manifest.json version from "1.0.0" to "0.1.0" to align with semantic-release initial version
+- [x] 3.18 Delete any existing git tags if present (for clean semantic-release start)
+- [x] 3.19 Remove CHANGELOG.md if it exists (semantic-release will generate it)
+- [x] 3.20 Test semantic release by creating test commit with feat: prefix and verifying version bump (after CI setup is complete)
 
 ### [ ] 4.0 Documentation Structure and Standards
 
