@@ -50,6 +50,7 @@ A Chrome extension that replaces the default new tab page with a customizable da
 ### New Tab URL
 
 Set the destination URL for new tabs. Supports:
+
 - Web URLs (http/https) with domain validation
 - Chrome internal URLs (chrome://)
 - File URLs (file://)
@@ -71,6 +72,7 @@ Configure the delay in milliseconds before redirecting to the configured URL.
 Customize the background color of both the new tab page and options page.
 
 **Supported formats**:
+
 - Hex: `#05060a`
 - RGB: `rgb(5,6,10)`
 - RGBA: `rgba(5,6,10,1)`
@@ -78,6 +80,7 @@ Customize the background color of both the new tab page and options page.
 - Named colors: `black`, `darkblue`, etc.
 
 **Preset Colors Available**:
+
 - Midnight Blue (#191970)
 - Charcoal (#36454F)
 - Deep Purple (#2D1B3D)
@@ -123,7 +126,7 @@ Customize the background color of both the new tab page and options page.
 
 ### Project Structure
 
-```
+```text
 dark-homepage-newtab/
 ├── manifest.json          # Extension manifest
 ├── newtab.html            # New tab page HTML
@@ -149,4 +152,3 @@ This project is open source and available for personal use.
 ## Version
 
 Current version information is displayed in the options page footer.
-

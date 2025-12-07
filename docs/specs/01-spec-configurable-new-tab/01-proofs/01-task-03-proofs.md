@@ -32,6 +32,7 @@
 ```
 
 **Verification:**
+
 - ✓ Redirect delay input field with number type, min="0", step="100"
 - ✓ Background color input field with text type for flexibility
 - ✓ Error message containers for both fields
@@ -68,6 +69,7 @@ function validateRedirectDelay(delayValue) {
 ```
 
 **Verification:**
+
 - ✓ Validates non-negative numbers
 - ✓ Handles empty values (uses default)
 - ✓ Rejects NaN values
@@ -119,6 +121,7 @@ function validateBackgroundColor(colorValue) {
 ```
 
 **Verification:**
+
 - ✓ Validates hex colors (#rrggbb, #rgb)
 - ✓ Validates rgb/rgba colors
 - ✓ Validates hsl/hsla colors
@@ -150,6 +153,7 @@ async function saveSettings(url, redirectDelay, backgroundColor) {
 ```
 
 **Verification:**
+
 - ✓ Saves URL, redirectDelay, and backgroundColor together
 - ✓ Uses chrome.storage.local.set() API
 - ✓ Includes error handling
@@ -204,6 +208,7 @@ function loadSettings() {
 ```
 
 **Verification:**
+
 - ✓ Loads all three settings (url, redirectDelay, backgroundColor)
 - ✓ Sets default values: redirectDelay = 0, backgroundColor = "#05060a"
 - ✓ Populates all input fields on page load
@@ -253,6 +258,7 @@ function handleBackgroundColorInput() {
 ```
 
 **Verification:**
+
 - ✓ Real-time validation on input events
 - ✓ Validation on blur events
 - ✓ Shows error messages for invalid values
@@ -318,6 +324,7 @@ async function handleFormSubmit(event) {
 ```
 
 **Verification:**
+
 - ✓ Validates all three fields (URL, delay, color) before saving
 - ✓ Shows appropriate error messages for each invalid field
 - ✓ Prevents save if any field is invalid
@@ -333,6 +340,7 @@ $ grep -c "validateRedirectDelay\|validateBackgroundColor\|saveSettings\|loadSet
 ```
 
 **Functions verified:**
+
 1. `validateRedirectDelay()` - Validates redirect delay input
 2. `validateBackgroundColor()` - Validates background color input
 3. `saveSettings()` - Saves all settings to chrome.storage.local
@@ -355,6 +363,7 @@ backgroundColorInput.value =
 ```
 
 **Verification:**
+
 - ✓ Default redirectDelay: 0 (immediate redirect)
 - ✓ Default backgroundColor: "#05060a" (matches newtab.html dark theme)
 - ✓ Defaults applied when settings don't exist
@@ -394,12 +403,14 @@ All proof artifacts demonstrate:
   - `[Options] Loaded background color: #444444`
 
 The screenshot shows:
+
 - **URL field**: Contains `https://google.com`
 - **Redirect Delay field**: Contains `3000` milliseconds
 - **Background Color field**: Contains `#444444`
 - **Console logs**: All `[Options]` prefixed logs showing the settings loading process
 
 **Verification:**
+
 - ✓ Options page displays redirect delay and background color input fields
 - ✓ All three settings (URL, delay, color) are visible and populated
 - ✓ Console logs demonstrate settings are loaded from chrome.storage.local
@@ -414,4 +425,3 @@ The screenshot demonstrates:
 2. **Settings Loading**: Console logs confirm settings are loaded from chrome.storage.local with correct values
 3. **Console Logging**: All settings changes are logged with `[Options]` prefix for easy debugging
 4. **Settings Persistence**: Values persist across page reloads as shown by the loaded values matching the input fields
-

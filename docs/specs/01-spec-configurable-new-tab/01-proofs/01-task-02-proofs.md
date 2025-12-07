@@ -46,6 +46,7 @@
 ```
 
 **Verification:**
+
 - ✓ Dark theme meta tag present (`<meta name="color-scheme" content="dark" />`)
 - ✓ External CSS file linked (`options.css`)
 - ✓ External JavaScript file linked (`options.js`)
@@ -84,6 +85,7 @@ function validateURL(urlString) {
 ```
 
 **Verification:**
+
 - ✓ Supports http/https schemes (via URL constructor)
 - ✓ Supports chrome:// scheme (via URL constructor)
 - ✓ Supports file:// scheme (via URL constructor)
@@ -110,6 +112,7 @@ async function saveURL(url) {
 ```
 
 **Verification:**
+
 - ✓ Uses `chrome.storage.local.set()` API
 - ✓ Includes error handling for `chrome.runtime.lastError`
 - ✓ Returns Promise for async/await support
@@ -138,6 +141,7 @@ function loadURL() {
 ```
 
 **Verification:**
+
 - ✓ Uses `chrome.storage.local.get()` API
 - ✓ Includes error handling
 - ✓ Populates input field on page load
@@ -173,6 +177,7 @@ if (urlInput) {
 ```
 
 **Verification:**
+
 - ✓ Real-time validation on `input` event
 - ✓ Validation on `blur` event
 - ✓ Shows error message for invalid URLs
@@ -209,6 +214,7 @@ async function handleFormSubmit(event) {
 ```
 
 **Verification:**
+
 - ✓ Prevents default form submission
 - ✓ Validates URL before saving
 - ✓ Shows error if URL is invalid
@@ -235,6 +241,7 @@ function showSuccess(message) {
 ```
 
 **Verification:**
+
 - ✓ Displays success message when URL is saved
 - ✓ Auto-hides after 3 seconds
 - ✓ Uses CSS class for visibility control
@@ -264,6 +271,7 @@ body {
 ```
 
 **Verification:**
+
 - ✓ Dark background color (#05060a) matches newtab.html
 - ✓ Light text color (#e5e5e5) matches newtab.html
 - ✓ System fonts match newtab.html
@@ -279,6 +287,7 @@ $ grep -c "chrome.storage.local" options.js
 ```
 
 **Functions using chrome.storage.local:**
+
 1. `saveURL()` - Saves URL to storage
 2. `loadURL()` - Loads URL from storage
 3. Error handling present in both functions
@@ -315,6 +324,7 @@ All proof artifacts demonstrate:
 - Settings loaded from storage on page load
 
 **Verification:**
+
 - ✓ Options page displays URL input field with dark theme styling
 - ✓ Settings persist and load correctly from chrome.storage.local
 
@@ -325,6 +335,7 @@ All proof artifacts demonstrate:
 **Description:** The options page demonstrates real-time URL validation. When the user enters an incomplete URL (`https://`), the validation function immediately detects the invalid format and displays a red error message below the input field: "Please enter a valid URL (e.g., https://example.com)".
 
 **Verification:**
+
 - ✓ Real-time validation triggers on input
 - ✓ Error message displays below input field
 - ✓ Error message uses red color (#e53e3e) for visibility
@@ -337,6 +348,7 @@ All proof artifacts demonstrate:
 **Description:** The options page demonstrates validation for invalid URL formats. When the user enters "file" (which is not a complete URL), the validation function detects the invalid format and displays the error message: "Please enter a valid URL (e.g., https://example.com)".
 
 **Verification:**
+
 - ✓ Validation correctly identifies invalid URL formats
 - ✓ Error message displays for non-URL text input
 - ✓ Validation works for various invalid input types

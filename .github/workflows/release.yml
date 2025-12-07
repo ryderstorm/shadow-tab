@@ -46,4 +46,3 @@ jobs:
           semantic-release version --config .releaserc.toml
           semantic-release publish --config .releaserc.toml
           semantic-release changelog --config .releaserc.toml
-

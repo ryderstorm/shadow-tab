@@ -107,6 +107,7 @@ button:focus {
 ```
 
 Focus indicators:
+
 - **Color**: Blue (#4a9eff) for good contrast on dark background
 - **Style**: 2px solid outline with 2px offset
 - **Visibility**: Clearly visible when tabbing through elements
@@ -114,6 +115,7 @@ Focus indicators:
 ### Tab Order
 
 Natural tab order through form elements:
+
 1. URL input
 2. Redirect delay input
 3. Color picker
@@ -126,6 +128,7 @@ Tab order is logical and follows the visual layout of the form.
 ### Keyboard Submission
 
 Enter key submission works by default:
+
 - Form element wraps all inputs
 - Submit button has `type="submit"`
 - Default form behavior handles Enter key submission
@@ -169,7 +172,8 @@ Enter key submission works by default:
 
 **Expected Result**: All inputs and buttons have ARIA labels
 
-**Implementation**: 
+**Implementation**:
+
 - All form inputs have `aria-label` attributes
 - All buttons have `aria-label` attributes
 - Error messages associated via `aria-describedby`
@@ -183,7 +187,8 @@ Enter key submission works by default:
 
 **Expected Result**: Screen reader reads labels and announces error/success messages
 
-**Implementation**: 
+**Implementation**:
+
 - `aria-label` provides accessible names
 - `aria-describedby` associates error messages with inputs
 - `aria-live="polite"` announces dynamic messages
@@ -233,4 +238,3 @@ All required accessibility features have been implemented:
 - ✅ aria-describedby for error associations
 - ✅ aria-live="polite" for screen reader announcements
 - ✅ role="status" on success message
-

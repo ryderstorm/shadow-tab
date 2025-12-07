@@ -24,6 +24,7 @@ const domainPattern = /^[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-
 ```
 
 This pattern:
+
 - Requires at least one dot in the domain
 - Validates TLD format (minimum 2 letters)
 - Allows alphanumeric characters and hyphens in domain parts
@@ -45,6 +46,7 @@ await fetch(trimmedUrl, {
 ```
 
 Features:
+
 - 10-second timeout using AbortController
 - Uses HEAD method for efficiency
 - Uses no-cors mode to avoid CORS blocking
@@ -87,7 +89,8 @@ This ensures domain resolution only triggers 1 second after the user stops typin
 
 **Expected Result**: Spinner appears, then successful resolution indicator
 
-**Implementation**: 
+**Implementation**:
+
 - Spinner appears when `domainResolutionStatus` is set to "resolving"
 - Status indicator shows green dot when resolution succeeds
 - Visual feedback is provided through CSS animations
@@ -119,6 +122,7 @@ This ensures domain resolution only triggers 1 second after the user stops typin
 ### Spinner Indicator
 
 CSS spinner animation:
+
 - Small (16px × 16px)
 - Unobtrusive positioning (right side of input)
 - Dark theme colors (light gray border on dark background)
@@ -127,6 +131,7 @@ CSS spinner animation:
 ### Status Indicator
 
 Visual status feedback:
+
 - **Resolving**: Blue pulsing dot
 - **Valid**: Green solid dot
 - **Invalid**: Red solid dot
@@ -150,4 +155,3 @@ All required functionality has been implemented:
 - ✅ Status indicators (valid/invalid/resolving)
 - ✅ Error messages with example formats
 - ✅ Consistency between options.js and newtab.js
-

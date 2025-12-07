@@ -71,6 +71,7 @@ Footer is styled to be unobtrusive and match dark theme:
 ```
 
 Features:
+
 - Small font size (12px)
 - Muted color (#888)
 - Subtle border separator
@@ -120,6 +121,7 @@ function validateStoredSettings() {
 ```
 
 Key features:
+
 - **Non-blocking**: Warnings are shown but don't prevent page functionality
 - **Graceful handling**: Invalid settings use defaults, user can continue
 - **Visual feedback**: Warnings appear in error message areas
@@ -160,7 +162,8 @@ Key features:
 ## Version Display Format
 
 Footer displays version information as:
-```
+
+```text
 Version: 1.0.0 (348bf02)
 ```
 
@@ -209,4 +212,3 @@ All required functionality has been implemented:
 - ✅ Warning messages shown for invalid settings
 - ✅ Invalid settings don't block form interaction
 - ✅ Graceful handling with defaults
-

@@ -302,6 +302,7 @@ Please confirm the following 10 classic dark colors for preset theme buttons:
 10. **Deep Indigo** - `#4B0082` - Dark purple-blue, vibrant yet dark
 
 **Alternative options if any need replacement:**
+
 - Dark Green: `#013220`
 - Dark Brown: `#3C241D`
 - Dark Gray: `#1C1C1C`

@@ -136,4 +136,3 @@ The configuration file itself is correct and follows all requirements from the s
 - ✅ markdownlint excludes CHANGELOG.md
 - ✅ Gitleaks configured with redact option
 - ✅ Renovate config validator configured
-

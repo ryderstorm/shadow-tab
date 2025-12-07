@@ -36,21 +36,21 @@ jobs:
           python3 << 'EOF'
           import json
           import sys
-          
+
           with open('manifest.json', 'r') as f:
               manifest = json.load(f)
-          
+
           required_fields = ['manifest_version', 'name', 'version']
           missing_fields = [field for field in required_fields if field not in manifest]
-          
+
           if missing_fields:
               print(f"Error: Missing required fields: {missing_fields}")
               sys.exit(1)
-          
+
           if manifest.get('manifest_version') != 3:
               print("Error: manifest_version must be 3")
               sys.exit(1)
-          
+
           print("✓ manifest.json structure is valid")
           EOF
 
@@ -59,18 +59,18 @@ jobs:
           echo "Validating Chrome extension packaging..."
           required_files=("manifest.json" "newtab.html" "newtab.js" "newtab.css" "options.html" "options.js" "options.css")
           missing_files=()
-          
+
           for file in "${required_files[@]}"; do
               if [ ! -f "$file" ]; then
                   missing_files+=("$file")
               fi
           done
-          
+
           if [ ${#missing_files[@]} -ne 0 ]; then
               echo "Error: Missing required extension files: ${missing_files[*]}"
               exit 1
           fi
-          
+
           echo "✓ All required extension files are present"
           echo "✓ Chrome extension can be packaged"
 
@@ -206,4 +206,3 @@ A test branch `test/ci-workflow-verification` was created to verify the workflow
 ## Note
 
 The workflow file is ready and will be active once pushed to the GitHub repository. GitHub Actions will automatically detect and run the workflow on the configured triggers. The workflow includes comprehensive validation for Chrome extension files and runs pre-commit hooks for code quality checks.
-

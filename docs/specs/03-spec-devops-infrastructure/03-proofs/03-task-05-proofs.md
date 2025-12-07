@@ -180,10 +180,10 @@ The configuration files are complete and ready to be applied. The GitHub API com
 3. Verify settings and ruleset are active
 
 The ruleset will enforce:
+
 - Pull request reviews before merging
 - CI status checks must pass
 - Linear history (no merge commits)
 - Branch deletion prevention
 - Force push prevention
 - Squash merge only
-

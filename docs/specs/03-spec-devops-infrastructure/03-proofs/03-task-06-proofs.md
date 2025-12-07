@@ -100,9 +100,9 @@ $ npx --yes --package renovate -- renovate-config-validator .github/renovate.jso
 3. Renovate will then create an onboarding PR and begin managing dependencies
 
 Once installed, Renovate will:
+
 - Create dependency update PRs following conventional commit format
 - Use CODEOWNERS for PR reviewers
 - Automerge non-major updates if CI passes
 - Group non-major dependency updates to reduce PR noise
 - Run pre-commit hooks on dependency update PRs
-

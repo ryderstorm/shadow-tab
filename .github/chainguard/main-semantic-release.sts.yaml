@@ -4,4 +4,3 @@ metadata:
   name: main-semantic-release
 spec:
   subject_pattern: "repo:ryderstorm/dark-homepage-newtab:ref:refs/heads/main"
-

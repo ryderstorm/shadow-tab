@@ -48,6 +48,7 @@ Preset buttons are arranged in a 5-column grid:
 ```
 
 CSS grid layout:
+
 ```css
 .preset-colors {
   display: grid;
@@ -79,7 +80,7 @@ function handleColorPickerInput() {
   const colorPicker = document.getElementById("color-picker");
   const backgroundColorInput = document.getElementById("background-color-input");
   const colorValue = colorPicker.value;
-  
+
   if (backgroundColorInput && colorValue) {
     backgroundColorInput.value = colorValue;
     applyBackgroundColorToPage(colorValue);
@@ -210,4 +211,3 @@ All required functionality has been implemented:
 - ✅ Background color applied on page load
 - ✅ New tab page color sync verified (already implemented)
 - ✅ Dark theme styling for color picker
-

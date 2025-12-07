@@ -17,4 +17,3 @@ token_env = "GH_TOKEN"
 
 [tool.semantic_release.commit_message]
 template = "chore: release {version} [skip ci]"
-

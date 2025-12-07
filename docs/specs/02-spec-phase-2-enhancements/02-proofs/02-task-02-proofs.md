@@ -44,6 +44,7 @@ The pulsing dot animation is implemented using pure CSS:
 ```
 
 Features:
+
 - **CSS-only approach**: No JavaScript required for animation
 - **Three dots**: Sequential animation with staggered delays (0s, 0.2s, 0.4s)
 - **Smooth animation**: 1.4s duration with ease-in-out timing
@@ -135,4 +136,3 @@ All required functionality has been implemented:
 - ✅ Animation shows only when redirectDelay > 0
 - ✅ Animation hidden when redirectDelay === 0
 - ✅ Smooth and professional animation appearance
-

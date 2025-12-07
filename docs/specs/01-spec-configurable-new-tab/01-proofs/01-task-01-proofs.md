@@ -42,6 +42,7 @@ $ grep -E "(script|style)" newtab.html
 ```
 
 **Result**: Only external references found:
+
 - `<link rel="stylesheet" href="newtab.css" />` - External CSS file
 - `<script src="newtab.js"></script>` - External JavaScript file
 
@@ -85,6 +86,7 @@ $ python3 -m json.tool manifest.json > /dev/null && echo "✓ manifest.json is v
 ### Manifest Structure Verification
 
 The manifest.json includes all required Manifest V3 fields:
+
 - ✓ `manifest_version: 3`
 - ✓ `permissions: ["storage"]` for chrome.storage.local API access
 - ✓ `options_ui` declaration for options page
@@ -106,4 +108,3 @@ All proof artifacts demonstrate:
 - `manifest.json` - Added storage permission, options_ui, and content_security_policy
 - `newtab.html` - Removed inline styles, added external CSS link
 - `newtab.css` - Created new file with styles moved from newtab.html
-

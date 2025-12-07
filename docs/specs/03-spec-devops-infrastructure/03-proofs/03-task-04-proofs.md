@@ -128,4 +128,3 @@ Documentation files pass markdownlint
 - ✅ PR template includes Why?, What Changed?, Testing, Additional Notes, and Checklist sections
 - ✅ Markdownlint run on all documentation files
 - ✅ All newly created documentation files pass markdownlint validation
-

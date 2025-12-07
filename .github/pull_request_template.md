@@ -27,4 +27,3 @@
 - [ ] Documentation updated (if applicable)
 - [ ] No sensitive information committed
 - [ ] Commit messages follow Conventional Commits format
-

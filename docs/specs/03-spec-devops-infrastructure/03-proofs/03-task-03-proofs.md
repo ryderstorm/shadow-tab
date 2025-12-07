@@ -111,7 +111,7 @@ $ cat manifest.json | grep version
 ### Git Tags Verification
 
 ```bash
-$ git tag -l
+git tag -l
 
 ```
 
@@ -204,4 +204,3 @@ The semantic release configuration is complete and ready to use. Once the CI wor
 6. Create GitHub releases with changelog content
 
 The workflow will trigger automatically after successful CI completion on the main branch.
-

@@ -169,6 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
 ```
 
 **Verification:**
+
 - ✓ Reads configuration from chrome.storage.local on page load
 - ✓ Includes error handling for storage operations
 - ✓ Applies background color immediately before redirect
@@ -204,6 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
 ```
 
 **Verification:**
+
 - ✓ Error message container div added (`id="error-message"`)
 - ✓ Error message initially hidden (no `show` class)
 - ✓ Loading text updated to generic "Loading…"
@@ -229,6 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
 ```
 
 **Verification:**
+
 - ✓ Error message styled with red color (#e53e3e) matching dark theme
 - ✓ Centered text alignment
 - ✓ Hidden by default (`display: none`)
@@ -256,6 +259,7 @@ applyBackgroundColor(backgroundColor);
 ```
 
 **Verification:**
+
 - ✓ Background color applied immediately on page load
 - ✓ Uses configured color from storage if available
 - ✓ Falls back to default #05060a if not configured
@@ -286,6 +290,7 @@ function validateURL(urlString) {
 ```
 
 **Verification:**
+
 - ✓ Supports http/https schemes
 - ✓ Supports chrome:// scheme
 - ✓ Supports file:// scheme
@@ -317,6 +322,7 @@ function redirectToURL(url, delay) {
 ```
 
 **Verification:**
+
 - ✓ Uses setTimeout for delay implementation
 - ✓ Handles delay = 0 as immediate redirect
 - ✓ Respects configured delay value
@@ -338,6 +344,7 @@ if (!url || !validateURL(url)) {
 ```
 
 **Verification:**
+
 - ✓ Checks for missing URL
 - ✓ Validates URL format before redirect
 - ✓ Shows error message instead of redirecting
@@ -363,6 +370,7 @@ $ grep -c "chrome.storage.local" newtab.js
 ```
 
 **Functions using chrome.storage.local:**
+
 1. `loadAndApplySettings()` - Loads all settings from storage
 
 ## Test: Console Logging
@@ -384,6 +392,7 @@ The newtab.js includes comprehensive console logging:
 - `[NewTab] No valid URL found in settings` - Missing URL errors
 
 **Verification:**
+
 - ✓ All logs prefixed with [NewTab] for easy filtering
 - ✓ Logs show settings loading process
 - ✓ Logs show background color application
@@ -413,8 +422,8 @@ All proof artifacts demonstrate:
 ## Manual Testing Notes
 
 **Note:** Manual testing screenshots will be provided by the user to demonstrate:
+
 - New tab opens showing dark background with configured color immediately
 - Redirect occurs after configured delay
 - Error message displays when URL is missing or invalid
 - Various URL formats (http, https, chrome://, file://) work correctly
-

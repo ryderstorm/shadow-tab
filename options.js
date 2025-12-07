@@ -136,7 +136,7 @@ async function resolveDomain(urlString) {
         signal: controller.signal,
       });
       clearTimeout(timeoutId);
-      
+
       // If fetch succeeds, URL is reachable
       // Note: We can't read status codes in no-cors mode, so we assume it's valid
       console.log("[Options] URL validation successful:", trimmedUrl);
@@ -145,7 +145,7 @@ async function resolveDomain(urlString) {
       return true;
     } catch (error) {
       clearTimeout(timeoutId);
-      
+
       // AbortError means timeout - domain is unreachable
       if (error.name === "AbortError") {
         console.log("[Options] URL validation timed out:", trimmedUrl);
@@ -153,7 +153,7 @@ async function resolveDomain(urlString) {
         showURLError("URL validation timed out. The URL may be unreachable.");
         return false;
       }
-      
+
       // Other network errors - URL is unreachable
       console.log("[Options] URL validation failed:", trimmedUrl, error);
       showURLValidationMessage("", false);
@@ -718,13 +718,13 @@ function handlePresetColorClick(colorValue) {
 // Initialize page when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   console.log("[Options] Page initialized, loading settings...");
-  
+
   // Display version information
   displayVersion();
-  
+
   // Validate stored settings
   validateStoredSettings();
-  
+
   // Load saved settings
   loadSettings();
 
@@ -775,4 +775,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
