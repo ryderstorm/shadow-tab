@@ -106,6 +106,16 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Cache pre-commit hooks
+        uses: actions/cache@v4
+        id: cache-pre-commit
+        with:
+          path: ~/.cache/pre-commit
+          key: pre-commit-${{ runner.os }}-python3.12-${{ hashFiles('.pre-commit-config.yaml') }}
+          restore-keys: |
+            pre-commit-${{ runner.os }}-python3.12-
+            pre-commit-${{ runner.os }}-
+
       - name: Run pre-commit hooks
         uses: pre-commit/action@v3.0.1
         with:
