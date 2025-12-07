@@ -4,8 +4,15 @@ allow_zero_version = true
 version_variables = [
     "manifest.json:version"
 ]
+commit_message = "chore: release {version} [skip ci]"
+build_command = """
+  # Version is automatically updated in manifest.json via version_variables
+  # options.js reads version dynamically from manifest.json at runtime
+  # No build step needed - version display updates automatically
+  echo "Version updated in manifest.json: $PACKAGE_VERSION"
+"""
 
-[tool.semantic_release.changelog]
+[tool.semantic_release.changelog.default_templates]
 changelog_file = "CHANGELOG.md"
 output_format = "md"
 
@@ -14,6 +21,3 @@ match = "main"
 
 [tool.semantic_release.remote]
 token_env = "GH_TOKEN"
-
-[tool.semantic_release.commit_message]
-template = "chore: release {version} [skip ci]"

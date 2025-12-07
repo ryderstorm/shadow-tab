@@ -1,11 +1,6 @@
 // options.js
 
 /**
- * Git commit hash (update manually on each commit)
- */
-const GIT_COMMIT_HASH = "348bf02";
-
-/**
  * Preset color themes
  */
 const PRESET_COLORS = [
@@ -397,9 +392,8 @@ function displayVersion() {
   const footer = document.getElementById("version-footer");
   if (footer) {
     const version = getManifestVersion();
-    const commitHash = GIT_COMMIT_HASH;
-    footer.textContent = `Version: ${version} (${commitHash})`;
-    console.log("[Options] Version displayed:", version, commitHash);
+    footer.textContent = `Version: ${version}`;
+    console.log("[Options] Version displayed:", version);
   }
 }
 
