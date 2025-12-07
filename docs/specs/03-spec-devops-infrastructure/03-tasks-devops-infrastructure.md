@@ -53,7 +53,7 @@
 - [x] 1.9 Test commitlint enforcement by attempting invalid commit message and verifying failure
 - [x] 1.10 Test valid conventional commit message succeeds
 
-### [ ] 2.0 CI/CD Workflow Implementation
+### [x] 2.0 CI/CD Workflow Implementation
 
 #### 2.0 Proof Artifact(s)
 
@@ -65,21 +65,21 @@
 
 #### 2.0 Tasks
 
-- [ ] 2.1 Create `.github/workflows/` directory if it doesn't exist
-- [ ] 2.2 Create `.github/workflows/ci.yml` workflow file with name "CI - Tests and Linting"
-- [ ] 2.3 Configure workflow triggers: push to main branch, pull_request, and workflow_dispatch
-- [ ] 2.4 Create "Run Tests" job with ubuntu-latest runner
-- [ ] 2.5 Add manifest.json validation step to test job (validate JSON syntax and structure)
-- [ ] 2.6 Add Chrome extension packaging validation step (verify extension files can be packaged)
-- [ ] 2.7 Add placeholder steps for HTML/CSS/JS linting tools (commented with TODO)
-- [ ] 2.8 Add placeholder steps for automated testing framework (commented with TODO)
-- [ ] 2.9 Create "Run Linting" job with ubuntu-latest runner
-- [ ] 2.10 Configure Python 3.12 setup for pre-commit hooks in linting job
-- [ ] 2.11 Configure Node.js 20 setup for Renovate validator in linting job
-- [ ] 2.12 Add pre-commit hooks step to linting job using pre-commit/action@v3.0.1 with --all-files flag
-- [ ] 2.13 Pin all GitHub Actions to specific versions (checkout@v6.0.1, setup-python@v6.1.0, setup-node@v6.1.0)
-- [ ] 2.14 Create test branch and test PR to verify CI workflow runs successfully
-- [ ] 2.15 Verify both "Run Tests" and "Run Linting" jobs pass on test PR
+- [x] 2.1 Create `.github/workflows/` directory if it doesn't exist
+- [x] 2.2 Create `.github/workflows/ci.yml` workflow file with name "CI - Tests and Linting"
+- [x] 2.3 Configure workflow triggers: push to main branch, pull_request, and workflow_dispatch
+- [x] 2.4 Create "Run Tests" job with ubuntu-latest runner
+- [x] 2.5 Add manifest.json validation step to test job (validate JSON syntax and structure)
+- [x] 2.6 Add Chrome extension packaging validation step (verify extension files can be packaged)
+- [x] 2.7 Add placeholder steps for HTML/CSS/JS linting tools (commented with TODO)
+- [x] 2.8 Add placeholder steps for automated testing framework (commented with TODO)
+- [x] 2.9 Create "Run Linting" job with ubuntu-latest runner
+- [x] 2.10 Configure Python 3.12 setup for pre-commit hooks in linting job
+- [x] 2.11 Configure Node.js 20 setup for Renovate validator in linting job
+- [x] 2.12 Add pre-commit hooks step to linting job using pre-commit/action@v3.0.1 with --all-files flag
+- [x] 2.13 Pin all GitHub Actions to specific versions (checkout@v6.0.1, setup-python@v6.1.0, setup-node@v6.1.0)
+- [x] 2.14 Create test branch and test PR to verify CI workflow runs successfully
+- [x] 2.15 Verify both "Run Tests" and "Run Linting" jobs pass on test PR
 
 ### [ ] 3.0 Semantic Release Automation
 
