@@ -34,7 +34,7 @@ test.describe("Extension Installation and Setup", () => {
     // So we verify that extension ID is valid instead
     expect(extensionId).toBeDefined();
     expect(extensionId).toMatch(/^[a-z]{32}$/);
-    
+
     // Verify extension is accessible by checking manifest
     const page = await context.newPage();
     const manifestUrl = `chrome-extension://${extensionId}/manifest.json`;
@@ -156,12 +156,19 @@ extensionId: async ({ context }, use) => {
   // Then use chrome.runtime.id to get the extension ID
   const page = await context.newPage();
   try {
-    await page.goto("chrome://newtab", { waitUntil: "domcontentloaded", timeout: 10000 });
-    
+    await page.goto("chrome://newtab", {
+      waitUntil: "domcontentloaded",
+      timeout: 10000,
+    });
+
     // Get extension ID using chrome.runtime API from the extension page
     extensionId = await page.evaluate(() => {
       return new Promise<string | null>((resolve) => {
-        if (typeof chrome !== "undefined" && chrome.runtime && chrome.runtime.id) {
+        if (
+          typeof chrome !== "undefined" &&
+          chrome.runtime &&
+          chrome.runtime.id
+        ) {
           resolve(chrome.runtime.id);
         } else {
           resolve(null);
@@ -175,7 +182,7 @@ extensionId: async ({ context }, use) => {
   }
 
   await use(extensionId);
-}
+};
 ```
 
 ## Screenshot Evidence
@@ -200,4 +207,3 @@ $ ls -la test-results/options-page-loaded.png
 ✅ Tests run in headless mode (no browser windows opened)
 
 All proof artifacts demonstrate that Task 2.0 has been successfully completed.
-

@@ -84,7 +84,7 @@
 - [x] 2.9 Add screenshot capture in at least one test to demonstrate visual confirmation
 - [x] 2.10 Run `npx playwright test tests/installation.spec.ts` and verify all tests pass
 
-### [ ] 3.0 New Tab Page Functionality Testing
+### [x] 3.0 New Tab Page Functionality Testing
 
 #### 3.0 Proof Artifact(s)
 
@@ -97,25 +97,25 @@
 
 #### 3.0 Tasks
 
-- [ ] 3.1 Create `tests/page-objects/` directory
-- [ ] 3.2 Create `tests/page-objects/NewTabPage.ts` page object class
-- [ ] 3.3 Implement constructor in NewTabPage that accepts Playwright Page object
-- [ ] 3.4 Add method `openNewTab()` in NewTabPage that opens new tab normally using `chrome://newtab` (simulates user pressing Ctrl+T, Chrome automatically loads extension's newtab.html)
-- [ ] 3.5 Add method `getLoadingAnimation()` that returns locator for loading animation container (`#loading`)
-- [ ] 3.6 Add method `getErrorMessage()` that returns locator for error message (`#error-message`)
-- [ ] 3.7 Add method `getBody()` that returns locator for body element
-- [ ] 3.8 Add method `waitForRedirect(delay)` that waits for redirect to occur after specified delay
-- [ ] 3.9 Add method `getBackgroundColor()` that retrieves computed background color of body element
-- [ ] 3.10 Create `tests/newtab.spec.ts` test file
-- [ ] 3.11 Import test, expect from fixtures and NewTabPage from page objects
-- [ ] 3.12 Write test case "should load settings from storage and apply background color" that sets chrome.storage.local using storage helper, opens new tab with `chrome://newtab`, and verifies background color is applied
-- [ ] 3.13 Write test case "should display loading animation when delay is greater than 0ms" that sets delay > 0 and verifies loading animation is visible
-- [ ] 3.14 Write test case "should not display loading animation when delay is 0ms" that sets delay to 0 and verifies loading animation is hidden
-- [ ] 3.15 Write test case "should redirect to configured URL after delay" that sets URL and delay in storage using storage helper, opens new tab with `chrome://newtab`, waits for redirect using `page.waitForURL()`, and verifies final URL matches configured URL
-- [ ] 3.16 Write test case "should display error message when URL is invalid" that sets invalid URL in storage and verifies error message is displayed
-- [ ] 3.17 Write test case "should display error message when URL is missing" that clears URL from storage and verifies error message is displayed
-- [ ] 3.18 Write test case "should use default background color when no color is configured" that clears backgroundColor from storage and verifies default color (#05060a) is applied
-- [ ] 3.19 Run `npx playwright test tests/newtab.spec.ts` and verify all tests pass
+- [x] 3.1 Create `tests/page-objects/` directory
+- [x] 3.2 Create `tests/page-objects/NewTabPage.ts` page object class
+- [x] 3.3 Implement constructor in NewTabPage that accepts Playwright Page object
+- [x] 3.4 Add method `openNewTab()` in NewTabPage that opens new tab normally using `chrome://newtab` (simulates user pressing Ctrl+T, Chrome automatically loads extension's newtab.html)
+- [x] 3.5 Add method `getLoadingAnimation()` that returns locator for loading animation container (`#loading`)
+- [x] 3.6 Add method `getErrorMessage()` that returns locator for error message (`#error-message`)
+- [x] 3.7 Add method `getBody()` that returns locator for body element
+- [x] 3.8 Add method `waitForRedirect(delay)` that waits for redirect to occur after specified delay
+- [x] 3.9 Add method `getBackgroundColor()` that retrieves computed background color of body element
+- [x] 3.10 Create `tests/newtab.spec.ts` test file
+- [x] 3.11 Import test, expect from fixtures and NewTabPage from page objects
+- [x] 3.12 Write test case "should load settings from storage and apply background color" that sets chrome.storage.local using storage helper, opens new tab with `chrome://newtab`, and verifies background color is applied
+- [x] 3.13 Write test case "should display loading animation when delay is greater than 0ms" that sets delay > 0 and verifies loading animation is visible
+- [x] 3.14 Write test case "should not display loading animation when delay is 0ms" that sets delay to 0 and verifies loading animation is hidden
+- [x] 3.15 Write test case "should redirect to configured URL after delay" that sets URL and delay in storage using storage helper, opens new tab with `chrome://newtab`, waits for redirect using `page.waitForURL()`, and verifies final URL matches configured URL
+- [x] 3.16 Write test case "should display error message when URL is invalid" that sets invalid URL in storage and verifies error message is displayed
+- [x] 3.17 Write test case "should display error message when URL is missing" that clears URL from storage and verifies error message is displayed
+- [x] 3.18 Write test case "should use default background color when no color is configured" that clears backgroundColor from storage and verifies default color (#05060a) is applied
+- [x] 3.19 Run `npx playwright test tests/newtab.spec.ts` and verify all tests pass
 
 ### [ ] 4.0 Options Page Functionality Testing
 

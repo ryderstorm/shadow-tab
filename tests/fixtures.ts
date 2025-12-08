@@ -3,7 +3,6 @@ import {
   expect,
   chromium,
   BrowserContext,
-  Page,
 } from "@playwright/test";
 import * as path from "path";
 import { existsSync } from "fs";
@@ -58,12 +57,19 @@ export const test = base.extend<ExtensionFixtures>({
     // Then use chrome.runtime.id to get the extension ID
     const page = await context.newPage();
     try {
-      await page.goto("chrome://newtab", { waitUntil: "domcontentloaded", timeout: 10000 });
-      
+      await page.goto("chrome://newtab", {
+        waitUntil: "domcontentloaded",
+        timeout: 10000,
+      });
+
       // Get extension ID using chrome.runtime API from the extension page
       extensionId = await page.evaluate(() => {
         return new Promise<string | null>((resolve) => {
-          if (typeof chrome !== "undefined" && chrome.runtime && chrome.runtime.id) {
+          if (
+            typeof chrome !== "undefined" &&
+            chrome.runtime &&
+            chrome.runtime.id
+          ) {
             resolve(chrome.runtime.id);
           } else {
             resolve(null);
@@ -79,7 +85,7 @@ export const test = base.extend<ExtensionFixtures>({
           extensionId = match[1];
         }
       }
-    } catch (error) {
+    } catch {
       // chrome://newtab failed, try alternatives
     } finally {
       await page.close();
@@ -92,7 +98,7 @@ export const test = base.extend<ExtensionFixtures>({
       try {
         const client = await context.newCDPSession(tempPage);
         const targets = await client.send("Target.getTargets");
-        
+
         for (const target of targets.targetInfos) {
           if (target.url?.startsWith("chrome-extension://")) {
             const match = target.url.match(/chrome-extension:\/\/([a-z]{32})/);
@@ -103,7 +109,7 @@ export const test = base.extend<ExtensionFixtures>({
           }
         }
         await client.detach();
-      } catch (error) {
+      } catch {
         // CDP failed
       } finally {
         await tempPage.close();
@@ -120,74 +126,77 @@ export const test = base.extend<ExtensionFixtures>({
   },
 
   // Storage helper: set storage values
-  setStorage: async ({ context }, use) => {
+  setStorage: async ({ context, extensionId }, use) => {
     await use(async (data: Record<string, any>) => {
-      // Get any page from context to access chrome.storage API
-      const pages = context.pages();
-      let page: Page;
-
-      if (pages.length > 0) {
-        page = pages[0];
-      } else {
-        // Create a new page if none exists
-        page = await context.newPage();
-      }
-
-      await page.evaluate((storageData) => {
-        return new Promise<void>((resolve) => {
-          chrome.storage.local.set(storageData, () => {
-            resolve();
-          });
+      // Navigate to extension page to access chrome.storage API
+      const page = await context.newPage();
+      try {
+        // Navigate to chrome://newtab which loads the extension's newtab.html
+        // This ensures chrome.storage API is available
+        await page.goto("chrome://newtab", {
+          waitUntil: "domcontentloaded",
         });
-      }, data);
+
+        await page.evaluate((storageData) => {
+          return new Promise<void>((resolve) => {
+            chrome.storage.local.set(storageData, () => {
+              resolve();
+            });
+          });
+        }, data);
+      } finally {
+        await page.close();
+      }
     });
   },
 
   // Storage helper: get storage values
-  getStorage: async ({ context }, use) => {
+  getStorage: async ({ context, extensionId }, use) => {
     await use(async (keys?: string | string[]) => {
-      // Get any page from context to access chrome.storage API
-      const pages = context.pages();
-      let page: Page;
-
-      if (pages.length > 0) {
-        page = pages[0];
-      } else {
-        // Create a new page if none exists
-        page = await context.newPage();
-      }
-
-      return await page.evaluate((storageKeys) => {
-        return new Promise<Record<string, any>>((resolve) => {
-          chrome.storage.local.get(storageKeys || null, (result) => {
-            resolve(result);
-          });
+      // Navigate to extension page to access chrome.storage API
+      const page = await context.newPage();
+      try {
+        // Navigate to chrome://newtab which loads the extension's newtab.html
+        // This ensures chrome.storage API is available
+        await page.goto("chrome://newtab", {
+          waitUntil: "domcontentloaded",
         });
-      }, keys);
+
+        return await page.evaluate((storageKeys) => {
+          return new Promise<Record<string, any>>((resolve) => {
+            chrome.storage.local.get(storageKeys || null, (result) => {
+              resolve(result);
+            });
+          });
+        }, keys);
+      } finally {
+        await page.close();
+      }
     });
   },
 
   // Storage helper: clear storage
-  clearStorage: async ({ context }, use) => {
+  clearStorage: async ({ context, extensionId }, use) => {
     await use(async () => {
-      // Get any page from context to access chrome.storage API
-      const pages = context.pages();
-      let page: Page;
+      // Navigate to extension page to access chrome.storage API
+      const page = await context.newPage();
+      try {
+        // Navigate to chrome://newtab which loads the extension's newtab.html
+        // This ensures chrome.storage API is available
+        await page.goto("chrome://newtab", {
+          waitUntil: "domcontentloaded",
+        });
 
-      if (pages.length > 0) {
-        page = pages[0];
-      } else {
-        // Create a new page if none exists
-        page = await context.newPage();
-      }
-
-      await page.evaluate(() => {
-        return new Promise<void>((resolve) => {
-          chrome.storage.local.clear(() => {
-            resolve();
+        await page.evaluate(() => {
+          return new Promise<void>((resolve) => {
+            chrome.storage.local.clear(() => {
+              resolve();
+            });
           });
         });
-      });
+      } finally {
+        await page.close();
+      }
     });
   },
 });

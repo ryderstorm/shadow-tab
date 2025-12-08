@@ -23,11 +23,11 @@ test.describe("Extension Installation and Setup", () => {
     // const serviceWorkers = context.serviceWorkers();
     // expect(serviceWorkers.length).toBeGreaterThan(0);
     // expect(serviceWorkers[0].url()).toContain(extensionId);
-    
+
     // For this extension, we verify the extension ID is valid
     expect(extensionId).toBeDefined();
     expect(extensionId).toMatch(/^[a-z]{32}$/);
-    
+
     // Verify extension is accessible by checking manifest
     const page = await context.newPage();
     const manifestUrl = `chrome-extension://${extensionId}/manifest.json`;
@@ -106,4 +106,3 @@ test.describe("Extension Installation and Setup", () => {
     await page.close();
   });
 });
-
