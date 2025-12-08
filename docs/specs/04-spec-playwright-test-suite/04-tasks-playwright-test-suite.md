@@ -117,7 +117,7 @@
 - [x] 3.18 Write test case "should use default background color when no color is configured" that clears backgroundColor from storage and verifies default color (#05060a) is applied
 - [x] 3.19 Run `npx playwright test tests/newtab.spec.ts` and verify all tests pass
 
-### [~] 4.0 Options Page Functionality Testing
+### [x] 4.0 Options Page Functionality Testing
 
 #### 4.0 Proof Artifact(s)
 
