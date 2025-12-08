@@ -2,9 +2,11 @@
 
 ## Relevant Files
 
-- `package.json` - Node.js package configuration file (new file, contains Playwright dependencies)
+- `package.json` - Node.js package configuration file (new file, contains Playwright and TypeScript dependencies)
+- `tsconfig.json` - TypeScript configuration file (new file, configures TypeScript compiler for Playwright tests)
 - `playwright.config.ts` - Playwright test configuration file (new file, configures test execution, timeouts, and browser settings)
-- `tests/fixtures.ts` - Playwright fixtures for Chrome extension setup (new file, provides reusable extension context and extension ID fixtures)
+- `tests/fixtures.ts` - Playwright fixtures for Chrome extension setup (new file, provides reusable extension context, extension ID, and storage helper fixtures)
+- `tests/test-data.ts` - Test data constants file (new file, contains test URL constants and test data)
 - `tests/installation.spec.ts` - Extension installation and setup tests (new file, verifies extension loads correctly)
 - `tests/page-objects/NewTabPage.ts` - Page Object Model class for new tab page interactions (new file, encapsulates new tab page locators and actions)
 - `tests/newtab.spec.ts` - New tab page functionality tests (new file, tests redirect, background color, loading animation)
@@ -17,11 +19,16 @@
 
 ### Notes
 
-- All test files use TypeScript/JavaScript with modern ES6+ syntax and async/await patterns
+- All test files use TypeScript with modern ES6+ syntax and async/await patterns
 - Page Object Model pattern is used to encapsulate page interactions and improve maintainability
 - Tests use Playwright's locator API with role-based and text-based selectors (ARIA labels, text content) rather than CSS classes or IDs
-- Test data (URLs, settings) are hardcoded directly in test files for simplicity
-- Playwright fixtures provide reusable setup for extension context and extension ID across all tests
+- Test URLs are defined in `tests/test-data.ts` constants file for consistency
+- Access chrome.storage.local API directly using `page.evaluate()` - no mocking required
+- Test with real URLs and verify UI behavior - no network mocking required
+- Playwright fixtures provide reusable setup for extension context, extension ID, and storage helpers across all tests
+- Extension path resolved using `path.join(__dirname, '..')` in fixtures
+- Clear storage selectively - only for tests that need isolation, not for persistence tests
+- New tab testing uses `chrome://newtab` to simulate real user behavior (Chrome automatically loads extension's newtab.html)
 - All markdown documentation files must pass markdownlint validation
 - Follow Conventional Commits format for all commits (e.g., `test: add new tab page tests`)
 
@@ -40,16 +47,19 @@
 #### 1.0 Tasks
 
 - [ ] 1.1 Create `package.json` file with Node.js project configuration (name, version, description)
-- [ ] 1.2 Install `@playwright/test` as a dev dependency using `npm install --save-dev @playwright/test`
-- [ ] 1.3 Create `playwright.config.ts` at project root with basic configuration (test directory, timeout settings, headless mode)
-- [ ] 1.4 Configure Playwright to use Chromium browser with extension loading support
-- [ ] 1.5 Create `tests/` directory structure
-- [ ] 1.6 Create `tests/fixtures.ts` with base test fixture that extends Playwright's test
-- [ ] 1.7 Implement `context` fixture in `tests/fixtures.ts` that loads Chrome extension using `chromium.launchPersistentContext()` with `--load-extension` and `--disable-extensions-except` arguments
-- [ ] 1.8 Implement `extensionId` fixture in `tests/fixtures.ts` that retrieves extension ID from service worker (Manifest V3) using `context.serviceWorkers()` and `waitForEvent('serviceworker')`
-- [ ] 1.9 Export extended test and expect from `tests/fixtures.ts` for use in test files
-- [ ] 1.10 Update `.gitignore` to exclude Playwright test artifacts (`test-results/`, `playwright-report/`, `playwright/.cache/`)
-- [ ] 1.11 Verify fixtures work by running `npx playwright test --list` (should show no tests yet, but no errors)
+- [ ] 1.2 Install `@playwright/test`, `typescript`, and `@types/node` as dev dependencies using `npm install --save-dev @playwright/test typescript @types/node`
+- [ ] 1.3 Create `tsconfig.json` at project root with Playwright-compatible TypeScript configuration (ES2020 target, CommonJS modules, strict mode)
+- [ ] 1.4 Create `playwright.config.ts` at project root with basic configuration (test directory, timeout settings, headless mode, HTML reporter)
+- [ ] 1.5 Configure Playwright to use Chromium browser with extension loading support
+- [ ] 1.6 Create `tests/` directory structure
+- [ ] 1.7 Create `tests/fixtures.ts` with base test fixture that extends Playwright's test
+- [ ] 1.8 Implement `context` fixture in `tests/fixtures.ts` that resolves extension path using `path.join(__dirname, '..')` and loads Chrome extension using `chromium.launchPersistentContext()` with `--load-extension` and `--disable-extensions-except` arguments
+- [ ] 1.9 Implement `extensionId` fixture in `tests/fixtures.ts` that retrieves extension ID from service worker (Manifest V3) using `context.serviceWorkers()` and `waitForEvent('serviceworker')`
+- [ ] 1.10 Add storage helper methods to fixtures: `setStorage(data)` that uses `page.evaluate()` to call `chrome.storage.local.set()`, `getStorage(keys)` that uses `page.evaluate()` to call `chrome.storage.local.get()`, and `clearStorage()` that clears storage for test isolation
+- [ ] 1.11 Export extended test and expect from `tests/fixtures.ts` for use in test files
+- [ ] 1.12 Create `tests/test-data.ts` file with test URL constants (example.com, httpbin.org, google.com, httpstat.us, chrome://version, jsonplaceholder.typicode.com)
+- [ ] 1.13 Update `.gitignore` to exclude Playwright test artifacts (`test-results/`, `playwright-report/`, `playwright/.cache/`)
+- [ ] 1.14 Verify fixtures work by running `npx playwright test --list` (should show no tests yet, but no errors)
 
 ### [ ] 2.0 Extension Installation and Setup Testing
 
@@ -90,7 +100,7 @@
 - [ ] 3.1 Create `tests/page-objects/` directory
 - [ ] 3.2 Create `tests/page-objects/NewTabPage.ts` page object class
 - [ ] 3.3 Implement constructor in NewTabPage that accepts Playwright Page object
-- [ ] 3.4 Add method `goto()` in NewTabPage that navigates to new tab page using extension ID
+- [ ] 3.4 Add method `openNewTab()` in NewTabPage that opens new tab normally using `chrome://newtab` (simulates user pressing Ctrl+T, Chrome automatically loads extension's newtab.html)
 - [ ] 3.5 Add method `getLoadingAnimation()` that returns locator for loading animation container (`#loading`)
 - [ ] 3.6 Add method `getErrorMessage()` that returns locator for error message (`#error-message`)
 - [ ] 3.7 Add method `getBody()` that returns locator for body element
@@ -98,10 +108,10 @@
 - [ ] 3.9 Add method `getBackgroundColor()` that retrieves computed background color of body element
 - [ ] 3.10 Create `tests/newtab.spec.ts` test file
 - [ ] 3.11 Import test, expect from fixtures and NewTabPage from page objects
-- [ ] 3.12 Write test case "should load settings from storage and apply background color" that mocks chrome.storage.local with test data and verifies background color is applied
+- [ ] 3.12 Write test case "should load settings from storage and apply background color" that sets chrome.storage.local using storage helper, opens new tab with `chrome://newtab`, and verifies background color is applied
 - [ ] 3.13 Write test case "should display loading animation when delay is greater than 0ms" that sets delay > 0 and verifies loading animation is visible
 - [ ] 3.14 Write test case "should not display loading animation when delay is 0ms" that sets delay to 0 and verifies loading animation is hidden
-- [ ] 3.15 Write test case "should redirect to configured URL after delay" that sets URL and delay, mocks storage, and verifies redirect occurs after delay
+- [ ] 3.15 Write test case "should redirect to configured URL after delay" that sets URL and delay in storage using storage helper, opens new tab with `chrome://newtab`, waits for redirect using `page.waitForURL()`, and verifies final URL matches configured URL
 - [ ] 3.16 Write test case "should display error message when URL is invalid" that sets invalid URL in storage and verifies error message is displayed
 - [ ] 3.17 Write test case "should display error message when URL is missing" that clears URL from storage and verifies error message is displayed
 - [ ] 3.18 Write test case "should use default background color when no color is configured" that clears backgroundColor from storage and verifies default color (#05060a) is applied
@@ -143,16 +153,16 @@
 - [ ] 4.20 Add method `getBackgroundColor()` that retrieves computed background color of body element
 - [ ] 4.21 Create `tests/options.spec.ts` test file
 - [ ] 4.22 Import test, expect from fixtures and OptionsPage from page objects
-- [ ] 4.23 Write test case "should load and display current settings from storage" that mocks chrome.storage.local and verifies form fields are populated
+- [ ] 4.23 Write test case "should load and display current settings from storage" that sets chrome.storage.local using storage helper, navigates to options page, and verifies form fields are populated
 - [ ] 4.24 Write test case "should validate URL format in real-time" that types invalid URL and verifies error message appears
 - [ ] 4.25 Write test case "should validate redirect delay range" that tests values outside 0-60000ms range and verifies error messages
 - [ ] 4.26 Write test case "should validate background color format" that tests invalid color values and verifies error messages
-- [ ] 4.27 Write test case "should save settings to storage when Save button is clicked" that fills form, clicks save, and verifies settings are saved to chrome.storage.local
+- [ ] 4.27 Write test case "should save settings to storage when Save button is clicked" that fills form, clicks save, uses storage helper to read chrome.storage.local, and verifies settings are saved correctly
 - [ ] 4.28 Write test case "should display success message after successful save" that saves settings and verifies success message appears
 - [ ] 4.29 Write test case "should update page background color when color picker changes" that changes color picker and verifies body background color updates
 - [ ] 4.30 Write test case "should update page background color when preset color button is clicked" that clicks preset button and verifies body background color updates
 - [ ] 4.31 Write test case "should display version information in footer" that verifies version footer contains version text
-- [ ] 4.32 Write test case "should handle URL validation with mock network requests" that mocks network requests using `page.route()` and verifies URL validation feedback
+- [ ] 4.32 Write test case "should handle URL validation with real URLs" that types various URL formats (valid and invalid) and verifies UI validation feedback appears correctly (no network mocking needed)
 - [ ] 4.33 Run `npx playwright test tests/options.spec.ts` and verify all tests pass
 
 ### [ ] 5.0 End-to-End User Flow Testing
@@ -169,7 +179,7 @@
 
 - [ ] 5.1 Create `tests/e2e.spec.ts` test file
 - [ ] 5.2 Import test, expect from fixtures, NewTabPage and OptionsPage from page objects
-- [ ] 5.3 Write test case "should complete workflow from options configuration to new tab redirect" that configures settings in options page, opens new tab, and verifies redirect occurs
+- [ ] 5.3 Write test case "should complete workflow from options configuration to new tab redirect" that configures settings in options page, opens new tab normally with `chrome://newtab`, waits for redirect using `page.waitForURL()`, and verifies redirect occurs to configured URL
 - [ ] 5.4 Write test case "should persist settings across new tab opens" that saves settings, opens multiple new tabs, and verifies settings persist
 - [ ] 5.5 Write test case "should handle multiple configuration changes correctly" that changes settings multiple times and verifies each change is saved and applied
 - [ ] 5.6 Write test case "should handle empty settings gracefully" that clears all settings and verifies default behavior (error message for missing URL)
@@ -198,16 +208,18 @@
 - [ ] 6.5 Add step "Install Playwright browsers" that runs `npx playwright install --with-deps`
 - [ ] 6.6 Add step "Install dependencies" that runs `npm install` (or `npm ci` for CI)
 - [ ] 6.7 Add step "Run Playwright tests" that runs `npx playwright test` in headless mode
-- [ ] 6.8 Add step "Upload test results" that uploads `playwright-report/` as GitHub Actions artifact
-- [ ] 6.9 Configure Playwright config to generate HTML report for CI runs
-- [ ] 6.10 Test CI workflow by pushing changes and verifying tests run in GitHub Actions
-- [ ] 6.11 Create `tests/README.md` documentation file
-- [ ] 6.12 Add "Overview" section to README explaining test suite purpose and structure
-- [ ] 6.13 Add "Setup" section to README with installation instructions (`npm install`, `npx playwright install --with-deps`)
-- [ ] 6.14 Add "Running Tests" section to README with commands for running all tests, specific test files, and in UI mode
-- [ ] 6.15 Add "Test Structure" section to README explaining Page Object Model pattern and test organization
-- [ ] 6.16 Add "Writing Tests" section to README with guidelines for adding new tests (using fixtures, page objects, locator patterns)
-- [ ] 6.17 Add "CI Integration" section to README explaining how tests run in GitHub Actions
-- [ ] 6.18 Add "Troubleshooting" section to README with common issues and solutions
-- [ ] 6.19 Run `markdownlint --fix tests/README.md` to ensure documentation passes linting
-- [ ] 6.20 Verify all documentation follows markdownlint rules and is properly formatted
+- [ ] 6.8 Configure Playwright config to generate HTML report and test results JSON for CI runs
+- [ ] 6.9 Add step "Upload test report" that uploads `playwright-report/` as GitHub Actions artifact (always, retention 30 days)
+- [ ] 6.10 Add step "Upload test artifacts on failure" that uploads `test-results/` (screenshots, videos, traces) as GitHub Actions artifact only on test failure (retention 7 days)
+- [ ] 6.11 Test CI workflow by pushing changes and verifying tests run in GitHub Actions
+- [ ] 6.12 Create `tests/README.md` documentation file
+- [ ] 6.13 Add "Overview" section to README explaining test suite purpose and structure
+- [ ] 6.14 Add "Setup" section to README with installation instructions (`npm install`, `npx playwright install --with-deps`)
+- [ ] 6.15 Add "Running Tests" section to README with commands for running all tests, specific test files, and in UI mode
+- [ ] 6.16 Add "Test Structure" section to README explaining Page Object Model pattern and test organization
+- [ ] 6.17 Add "Writing Tests" section to README with guidelines for adding new tests (using fixtures, page objects, locator patterns, storage helpers)
+- [ ] 6.18 Add "Test Data" section to README documenting test URL constants and their use cases
+- [ ] 6.19 Add "CI Integration" section to README explaining how tests run in GitHub Actions and artifact uploads
+- [ ] 6.20 Add "Troubleshooting" section to README with common issues and solutions
+- [ ] 6.21 Run `markdownlint --fix tests/README.md` to ensure documentation passes linting
+- [ ] 6.22 Verify all documentation follows markdownlint rules and is properly formatted

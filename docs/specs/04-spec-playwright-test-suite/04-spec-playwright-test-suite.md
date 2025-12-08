@@ -55,7 +55,7 @@ This specification defines the implementation of a comprehensive Playwright auto
 - The system shall load settings from chrome.storage.local when new tab opens
 - The system shall apply the configured background color to the new tab page
 - The system shall display loading animation when redirect delay is greater than 0ms
-- The system shall redirect to the configured URL after the specified delay
+- The system shall redirect to the configured URL after the specified delay (tested by opening new tab normally with `chrome://newtab`)
 - The system shall handle immediate redirect (0ms delay) without showing loading animation
 - The system shall display error message when URL is invalid or missing
 - The system shall use default background color when no color is configured
@@ -99,7 +99,7 @@ This specification defines the implementation of a comprehensive Playwright auto
 **Functional Requirements:**
 
 - The system shall allow user to configure URL, delay, and color in options page
-- The system shall persist settings across browser sessions
+- The system shall persist settings across new tab opens (within same browser session)
 - The system shall apply saved settings when new tab is opened
 - The system shall redirect to configured URL after specified delay
 - The system shall handle edge cases (empty settings, invalid URLs, extreme delay values)
@@ -145,16 +145,30 @@ The test suite implementation shall follow established repository patterns and c
 **Playwright Configuration:**
 
 - Use Playwright's Chrome extension testing capabilities with `chromium.launchPersistentContext()`
+- Resolve extension path using `path.join(__dirname, '..')` in fixtures (one level up from tests directory)
 - Configure extension loading using `--load-extension` and `--disable-extensions-except` Chrome arguments
 - Use `chromium` channel to enable headless mode for extensions
 - Create reusable fixtures for extension context and extension ID retrieval
+- Add storage helper methods to fixtures for accessing chrome.storage.local API
 
 **Test Data Management:**
 
 - Hardcode test URLs and settings directly in test files for simplicity
-- Use guaranteed-available test URLs (e.g., `https://example.com`, `https://httpbin.org`) for URL validation tests
-- Mock `chrome.storage.local` API responses using Playwright's `context.addInitScript()` or service worker evaluation
-- Mock network requests using Playwright's `page.route()` for URL resolution testing
+- Use guaranteed-available test URLs for testing (see Test URLs section below)
+- Access `chrome.storage.local` API directly using `page.evaluate()` - no mocking required
+- Test with real URLs and verify UI behavior - no network mocking required
+- Create storage helper methods in fixtures for convenience (`setStorage()`, `getStorage()`, `clearStorage()`)
+
+**Test URLs:**
+
+Use the following reliable test URLs for consistent testing:
+
+- `https://example.com` - IANA reserved domain, primary test URL
+- `https://httpbin.org` - HTTP testing service for URL validation tests
+- `https://www.google.com` - Real-world HTTPS URL for testing
+- `https://httpstat.us` - HTTP status code testing service
+- `chrome://version` - Chrome internal page for chrome:// scheme testing
+- `https://jsonplaceholder.typicode.com` - JSON API for testing
 
 **Page Object Model Implementation:**
 
@@ -175,18 +189,24 @@ The test suite implementation shall follow established repository patterns and c
 - Run tests in parallel with existing validation steps
 - Install Playwright browsers using `npx playwright install --with-deps`
 - Run tests in headless mode for CI execution
-- Generate and optionally publish test reports
+- Configure Playwright to generate HTML report and test results JSON
+- Upload HTML report as GitHub Actions artifact (always)
+- Upload screenshots, videos, and traces on failure only (to save CI storage)
+- Set retention: 30 days for reports, 7 days for failure artifacts
 
 **Dependencies:**
 
 - `@playwright/test`: Core Playwright testing framework
 - `playwright`: Playwright browser automation (installed via `npx playwright install`)
+- `typescript`: TypeScript compiler for type checking
+- `@types/node`: TypeScript type definitions for Node.js
 
 **File Structure:**
 
 ```text
 tests/
 ├── fixtures.ts                 # Playwright fixtures for extension setup
+├── test-data.ts                # Test URL constants and test data
 ├── page-objects/
 │   ├── NewTabPage.ts           # Page object for new tab page
 │   └── OptionsPage.ts          # Page object for options page
@@ -196,14 +216,19 @@ tests/
 ├── e2e.spec.ts                 # End-to-end user flow tests
 └── README.md                   # Test suite documentation
 playwright.config.ts            # Playwright configuration (separate file)
+tsconfig.json                   # TypeScript configuration
 ```
 
 **Configuration Decisions:**
 
 - **Playwright Config**: Separate `playwright.config.ts` file at project root
-- **Test Reports**: Published as GitHub Actions artifacts for CI runs
+- **TypeScript Config**: `tsconfig.json` file at project root with Playwright-compatible settings
+- **Test Reports**: HTML report always uploaded, failure artifacts (screenshots/videos) uploaded on failure only
 - **Test Timeouts**: Use Playwright's recommended defaults (30 seconds per test) with ability to override for specific tests if needed
-- **Test Data**: Hardcoded values in test files initially, keeping it simple for current test requirements
+- **Test Data**: Hardcoded values in test files with constants file (`tests/test-data.ts`) for test URLs
+- **Storage Access**: Use real chrome.storage.local API via `page.evaluate()` - no mocking required
+- **Test Isolation**: Clear storage selectively - only for tests that need isolation, not for persistence tests
+- **Redirect Testing**: Use `chrome://newtab` to simulate real user opening new tab (Chrome automatically loads extension's newtab.html)
 
 ## Success Metrics
 
