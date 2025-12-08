@@ -1,6 +1,7 @@
 :root {
   color-scheme: dark;
 }
+
 html,
 body {
   margin: 0;
@@ -17,6 +18,7 @@ body {
     sans-serif;
   transition: background-color 0.25s ease;
 }
+
 body {
   display: flex;
   align-items: center;
@@ -24,19 +26,23 @@ body {
   min-height: 100vh;
   padding: 20px;
 }
+
 .container {
   width: 100%;
   max-width: 600px;
 }
+
 h1 {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 32px;
   color: #e5e5e5;
 }
+
 .form-group {
   margin-bottom: 24px;
 }
+
 label {
   display: block;
   font-size: 14px;
@@ -44,11 +50,13 @@ label {
   margin-bottom: 8px;
   color: #e5e5e5;
 }
+
 .url-input-wrapper {
   position: relative;
   display: flex;
   align-items: center;
 }
+
 .url-validation-message {
   margin-top: 8px;
   font-size: 13px;
@@ -58,9 +66,11 @@ label {
   align-items: center;
   gap: 8px;
 }
+
 .url-validation-message.validating {
   color: #888;
 }
+
 .url-validation-message.validating::before {
   content: "";
   width: 12px;
@@ -71,17 +81,21 @@ label {
   display: inline-block;
   animation: spin 0.8s linear infinite;
 }
+
 .url-validation-message.success {
   color: #48bb78;
 }
+
 .url-validation-message:empty {
   display: none;
 }
+
 .color-input-wrapper {
   display: flex;
   gap: 8px;
   align-items: center;
 }
+
 input[type="color"] {
   width: 48px;
   height: 48px;
@@ -90,22 +104,25 @@ input[type="color"] {
   border-radius: 4px;
   cursor: pointer;
   background: transparent;
-  -webkit-appearance: none;
   appearance: none;
 }
+
 input[type="color"]::-webkit-color-swatch-wrapper {
   padding: 0;
   border: none;
   border-radius: 4px;
 }
+
 input[type="color"]::-webkit-color-swatch {
   border: 1px solid #2d2e32;
   border-radius: 4px;
 }
+
 input[type="color"]::-moz-color-swatch {
   border: 1px solid #2d2e32;
   border-radius: 4px;
 }
+
 input[type="text"],
 input[type="number"] {
   flex: 1;
@@ -123,18 +140,21 @@ input[type="number"] {
   color: #e5e5e5;
   box-sizing: border-box;
 }
+
 .preset-colors {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 8px;
   margin-top: 12px;
 }
+
 .preset-color-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
 }
+
 .preset-color-btn {
   width: 100%;
   height: 40px;
@@ -146,24 +166,29 @@ input[type="number"] {
     transform 0.15s ease,
     border-color 0.15s ease;
 }
+
 .preset-color-label {
   font-size: 11px;
   color: #888;
   text-align: center;
   line-height: 1.2;
-  word-break: break-word;
+  overflow-wrap: break-word;
 }
+
 .preset-color-btn:hover {
   transform: scale(1.05);
   border-color: #4a9eff;
 }
+
 .preset-color-btn:active {
   transform: scale(0.98);
 }
+
 .preset-color-btn:focus {
   outline: 2px solid #4a9eff;
   outline-offset: 2px;
 }
+
 input[type="text"]:focus,
 input[type="number"]:focus,
 input[type="color"]:focus {
@@ -171,10 +196,12 @@ input[type="color"]:focus {
   outline-offset: 2px;
   border-color: #4a9eff;
 }
+
 input[type="text"]:invalid,
 input[type="number"]:invalid {
   border-color: #e53e3e;
 }
+
 button {
   padding: 12px 24px;
   font-size: 14px;
@@ -186,22 +213,26 @@ button {
     "Segoe UI",
     sans-serif;
   background: #4a9eff;
-  color: #ffffff;
+  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
+
 button:hover {
   background: #3a8eef;
 }
+
 button:active {
   background: #2a7edf;
 }
+
 button:focus {
   outline: 2px solid #4a9eff;
   outline-offset: 2px;
 }
+
 .error-message {
   margin-top: 8px;
   font-size: 13px;
@@ -209,9 +240,11 @@ button:focus {
   min-height: 20px;
   display: none;
 }
+
 .error-message.show {
   display: block;
 }
+
 .success-message {
   margin-top: 8px;
   font-size: 13px;
@@ -219,9 +252,11 @@ button:focus {
   min-height: 20px;
   display: none;
 }
+
 .success-message.show {
   display: block;
 }
+
 .version-footer {
   margin-top: 32px;
   padding-top: 16px;
@@ -230,6 +265,7 @@ button:focus {
   color: #888;
   text-align: center;
 }
+
 @keyframes spin {
   to {
     transform: rotate(360deg);

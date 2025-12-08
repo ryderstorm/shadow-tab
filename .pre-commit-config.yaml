@@ -54,7 +54,7 @@ repos:
     hooks:
       - id: renovate-config-validator
 
-  # TypeScript, ESLint, and Prettier hooks
+  # TypeScript, ESLint, Prettier, HTMLHint, and Stylelint hooks
   - repo: local
     hooks:
       - id: typescript-type-check
@@ -78,3 +78,17 @@ repos:
         language: system
         types: [file]
         files: \.(js|jsx|ts|tsx|json|css|md)$
+
+      - id: htmlhint
+        name: HTMLHint
+        entry: npx htmlhint
+        language: system
+        types: [file]
+        files: \.html$
+
+      - id: stylelint
+        name: Stylelint
+        entry: npx stylelint --fix
+        language: system
+        types: [file]
+        files: \.css$

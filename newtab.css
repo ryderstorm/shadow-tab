@@ -1,6 +1,7 @@
 :root {
   color-scheme: dark;
 }
+
 html,
 body {
   margin: 0;
@@ -10,6 +11,7 @@ body {
   background: #05060a; /* very dark, no flash */
   color: #e5e5e5;
 }
+
 body {
   display: flex;
   align-items: center;
@@ -22,6 +24,7 @@ body {
     sans-serif;
   overflow: hidden;
 }
+
 .loading-container {
   display: flex;
   align-items: center;
@@ -29,6 +32,7 @@ body {
   gap: 8px;
   z-index: 1;
 }
+
 .pulsing-dot {
   width: 8px;
   height: 8px;
@@ -37,26 +41,32 @@ body {
   opacity: 0.7;
   animation: pulse-dot 1.4s ease-in-out infinite;
 }
+
 .pulsing-dot:nth-child(1) {
   animation-delay: 0s;
 }
+
 .pulsing-dot:nth-child(2) {
   animation-delay: 0.2s;
 }
+
 .pulsing-dot:nth-child(3) {
   animation-delay: 0.4s;
 }
+
 @keyframes pulse-dot {
   0%,
   100% {
     opacity: 0.3;
     transform: scale(1);
   }
+
   50% {
     opacity: 1;
     transform: scale(1.2);
   }
 }
+
 .error-message {
   font-size: 14px;
   color: #e53e3e;
@@ -65,6 +75,7 @@ body {
   display: none;
   z-index: 2;
 }
+
 .error-message.show {
   display: block;
 }

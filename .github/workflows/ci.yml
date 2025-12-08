@@ -65,29 +65,6 @@ jobs:
           echo "✓ All required extension files are present"
           echo "✓ Chrome extension can be packaged"
 
-      # TODO: Add HTML linting tool (e.g., HTMLHint, html-validate)
-      # - name: Lint HTML files
-      #   run: |
-      #     echo "Linting HTML files..."
-      #     # Add HTML linting command here
-
-      # TODO: Add CSS linting tool (e.g., Stylelint)
-      # - name: Lint CSS files
-      #   run: |
-      #     echo "Linting CSS files..."
-      #     # Add CSS linting command here
-
-      # TODO: Add JavaScript linting tool (e.g., ESLint)
-      # - name: Lint JavaScript files
-      #   run: |
-      #     echo "Linting JavaScript files..."
-      #     # Add JavaScript linting command here
-
-      # TODO: Add automated testing framework (e.g., Jest, Mocha)
-      # - name: Run tests
-      #   run: |
-      #     echo "Running tests..."
-      #     # Add test command here
 
   run-linting:
     name: Run Linting
