@@ -9,6 +9,7 @@ import * as path from "path";
 import { existsSync } from "fs";
 import { fileURLToPath } from "url";
 import { NewTabPage } from "./page-objects/NewTabPage";
+import { OptionsPage } from "./page-objects/OptionsPage";
 
 // Resolve extension path (one level up from tests directory)
 // Use ES module syntax for __dirname equivalent
@@ -29,6 +30,7 @@ type ExtensionFixtures = {
   getStorage: (keys?: string | string[]) => Promise<Record<string, any>>;
   clearStorage: () => Promise<void>;
   newTabPage: NewTabPage;
+  optionsPage: OptionsPage;
   page: Page;
 };
 
@@ -65,7 +67,7 @@ export const test = base.extend<ExtensionFixtures>({
         waitUntil: "domcontentloaded",
         timeout: 10000,
       });
-      
+
       // Get extension ID using chrome.runtime API from the extension page
       extensionId = await page.evaluate(() => {
         return new Promise<string | null>((resolve) => {
@@ -102,7 +104,7 @@ export const test = base.extend<ExtensionFixtures>({
       try {
         const client = await context.newCDPSession(tempPage);
         const targets = await client.send("Target.getTargets");
-        
+
         for (const target of targets.targetInfos) {
           if (target.url?.startsWith("chrome-extension://")) {
             const match = target.url.match(/chrome-extension:\/\/([a-z]{32})/);
@@ -141,13 +143,13 @@ export const test = base.extend<ExtensionFixtures>({
           waitUntil: "domcontentloaded",
         });
 
-      await page.evaluate((storageData) => {
-        return new Promise<void>((resolve) => {
-          chrome.storage.local.set(storageData, () => {
-            resolve();
+        await page.evaluate((storageData) => {
+          return new Promise<void>((resolve) => {
+            chrome.storage.local.set(storageData, () => {
+              resolve();
+            });
           });
-        });
-      }, data);
+        }, data);
       } finally {
         await page.close();
       }
@@ -166,13 +168,13 @@ export const test = base.extend<ExtensionFixtures>({
           waitUntil: "domcontentloaded",
         });
 
-      return await page.evaluate((storageKeys) => {
-        return new Promise<Record<string, any>>((resolve) => {
-          chrome.storage.local.get(storageKeys || null, (result) => {
-            resolve(result);
+        return await page.evaluate((storageKeys) => {
+          return new Promise<Record<string, any>>((resolve) => {
+            chrome.storage.local.get(storageKeys || null, (result) => {
+              resolve(result);
+            });
           });
-        });
-      }, keys);
+        }, keys);
       } finally {
         await page.close();
       }
@@ -191,13 +193,13 @@ export const test = base.extend<ExtensionFixtures>({
           waitUntil: "domcontentloaded",
         });
 
-      await page.evaluate(() => {
-        return new Promise<void>((resolve) => {
-          chrome.storage.local.clear(() => {
-            resolve();
+        await page.evaluate(() => {
+          return new Promise<void>((resolve) => {
+            chrome.storage.local.clear(() => {
+              resolve();
+            });
           });
         });
-      });
       } finally {
         await page.close();
       }
@@ -215,6 +217,12 @@ export const test = base.extend<ExtensionFixtures>({
   newTabPage: async ({ page }, use) => {
     const newTabPage = new NewTabPage(page);
     await use(newTabPage);
+  },
+
+  // Options page fixture: provides an OptionsPage instance (doesn't auto-navigate, test calls goto() when ready)
+  optionsPage: async ({ page }, use) => {
+    const optionsPage = new OptionsPage(page);
+    await use(optionsPage);
   },
 });
 

@@ -117,7 +117,7 @@
 - [x] 3.18 Write test case "should use default background color when no color is configured" that clears backgroundColor from storage and verifies default color (#05060a) is applied
 - [x] 3.19 Run `npx playwright test tests/newtab.spec.ts` and verify all tests pass
 
-### [ ] 4.0 Options Page Functionality Testing
+### [~] 4.0 Options Page Functionality Testing
 
 #### 4.0 Proof Artifact(s)
 
@@ -131,39 +131,39 @@
 
 #### 4.0 Tasks
 
-- [ ] 4.1 Create `tests/page-objects/OptionsPage.ts` page object class
-- [ ] 4.2 Implement constructor in OptionsPage that accepts Playwright Page object
-- [ ] 4.3 Add method `goto()` that navigates to options page using extension ID
-- [ ] 4.4 Add method `getUrlInput()` that returns locator for URL input field (`#url-input`)
-- [ ] 4.5 Add method `getRedirectDelayInput()` that returns locator for redirect delay input (`#redirect-delay-input`)
-- [ ] 4.6 Add method `getBackgroundColorInput()` that returns locator for background color input (`#background-color-input`)
-- [ ] 4.7 Add method `getColorPicker()` that returns locator for color picker (`#color-picker`)
-- [ ] 4.8 Add method `getSaveButton()` that returns locator for save button (`#save-button`)
-- [ ] 4.9 Add method `getUrlError()` that returns locator for URL error message (`#url-error`)
-- [ ] 4.10 Add method `getRedirectDelayError()` that returns locator for redirect delay error (`#redirect-delay-error`)
-- [ ] 4.11 Add method `getBackgroundColorError()` that returns locator for background color error (`#background-color-error`)
-- [ ] 4.12 Add method `getSuccessMessage()` that returns locator for success message (`#save-success`)
-- [ ] 4.13 Add method `getUrlValidationMessage()` that returns locator for URL validation message (`#url-validation-message`)
-- [ ] 4.14 Add method `getPresetColorButton(color)` that returns locator for preset color button with specified data-color attribute
-- [ ] 4.15 Add method `getVersionFooter()` that returns locator for version footer (`#version-footer`)
-- [ ] 4.16 Add method `fillUrl(url)` that fills URL input field
-- [ ] 4.17 Add method `fillRedirectDelay(delay)` that fills redirect delay input
-- [ ] 4.18 Add method `fillBackgroundColor(color)` that fills background color input
-- [ ] 4.19 Add method `clickSave()` that clicks save button
-- [ ] 4.20 Add method `getBackgroundColor()` that retrieves computed background color of body element
-- [ ] 4.21 Create `tests/options.spec.ts` test file
-- [ ] 4.22 Import test, expect from fixtures and OptionsPage from page objects
-- [ ] 4.23 Write test case "should load and display current settings from storage" that sets chrome.storage.local using storage helper, navigates to options page, and verifies form fields are populated
-- [ ] 4.24 Write test case "should validate URL format in real-time" that types invalid URL and verifies error message appears
-- [ ] 4.25 Write test case "should validate redirect delay range" that tests values outside 0-60000ms range and verifies error messages
-- [ ] 4.26 Write test case "should validate background color format" that tests invalid color values and verifies error messages
-- [ ] 4.27 Write test case "should save settings to storage when Save button is clicked" that fills form, clicks save, uses storage helper to read chrome.storage.local, and verifies settings are saved correctly
-- [ ] 4.28 Write test case "should display success message after successful save" that saves settings and verifies success message appears
-- [ ] 4.29 Write test case "should update page background color when color picker changes" that changes color picker and verifies body background color updates
-- [ ] 4.30 Write test case "should update page background color when preset color button is clicked" that clicks preset button and verifies body background color updates
-- [ ] 4.31 Write test case "should display version information in footer" that verifies version footer contains version text
-- [ ] 4.32 Write test case "should handle URL validation with real URLs" that types various URL formats (valid and invalid) and verifies UI validation feedback appears correctly (no network mocking needed)
-- [ ] 4.33 Run `npx playwright test tests/options.spec.ts` and verify all tests pass
+- [x] 4.1 Create `tests/page-objects/OptionsPage.ts` page object class
+- [x] 4.2 Implement constructor in OptionsPage that accepts Playwright Page object
+- [x] 4.3 Add method `goto()` that navigates to options page using extension ID
+- [x] 4.4 Add method `getUrlInput()` that returns locator for URL input field (`#url-input`)
+- [x] 4.5 Add method `getRedirectDelayInput()` that returns locator for redirect delay input (`#redirect-delay-input`)
+- [x] 4.6 Add method `getBackgroundColorInput()` that returns locator for background color input (`#background-color-input`)
+- [x] 4.7 Add method `getColorPicker()` that returns locator for color picker (`#color-picker`)
+- [x] 4.8 Add method `getSaveButton()` that returns locator for save button (`#save-button`)
+- [x] 4.9 Add method `getUrlError()` that returns locator for URL error message (`#url-error`)
+- [x] 4.10 Add method `getRedirectDelayError()` that returns locator for redirect delay error (`#redirect-delay-error`)
+- [x] 4.11 Add method `getBackgroundColorError()` that returns locator for background color error (`#background-color-error`)
+- [x] 4.12 Add method `getSuccessMessage()` that returns locator for success message (`#save-success`)
+- [x] 4.13 Add method `getUrlValidationMessage()` that returns locator for URL validation message (`#url-validation-message`)
+- [x] 4.14 Add method `getPresetColorButton(color)` that returns locator for preset color button with specified data-color attribute
+- [x] 4.15 Add method `getVersionFooter()` that returns locator for version footer (`#version-footer`)
+- [x] 4.16 Add method `fillUrl(url)` that fills URL input field
+- [x] 4.17 Add method `fillRedirectDelay(delay)` that fills redirect delay input
+- [x] 4.18 Add method `fillBackgroundColor(color)` that fills background color input
+- [x] 4.19 Add method `clickSave()` that clicks save button
+- [x] 4.20 Add method `getBackgroundColor()` that retrieves computed background color of body element
+- [x] 4.21 Create `tests/options.spec.ts` test file
+- [x] 4.22 Import test, expect from fixtures and OptionsPage from page objects
+- [x] 4.23 Write test case "should load and display current settings from storage" that sets chrome.storage.local using storage helper, navigates to options page, and verifies form fields are populated
+- [x] 4.24 Write test case "should validate URL format in real-time" that types invalid URL and verifies error message appears
+- [x] 4.25 Write test case "should validate redirect delay range" that tests values outside 0-60000ms range and verifies error messages
+- [x] 4.26 Write test case "should validate background color format" that tests invalid color values and verifies error messages
+- [x] 4.27 Write test case "should save settings to storage when Save button is clicked" that fills form, clicks save, uses storage helper to read chrome.storage.local, and verifies settings are saved correctly
+- [x] 4.28 Write test case "should display success message after successful save" that saves settings and verifies success message appears
+- [x] 4.29 Write test case "should update page background color when color picker changes" that changes color picker and verifies body background color updates
+- [x] 4.30 Write test case "should update page background color when preset color button is clicked" that clicks preset button and verifies body background color updates
+- [x] 4.31 Write test case "should display version information in footer" that verifies version footer contains version text
+- [x] 4.32 Write test case "should handle URL validation with real URLs" that types various URL formats (valid and invalid) and verifies UI validation feedback appears correctly (no network mocking needed)
+- [x] 4.33 Run `npx playwright test tests/options.spec.ts` and verify all tests pass
 
 ### [ ] 5.0 End-to-End User Flow Testing
 

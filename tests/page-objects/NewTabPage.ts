@@ -50,7 +50,7 @@ export class NewTabPage {
     // Wait for the delay plus a small buffer
     await this.page.waitForTimeout(delay + 100);
     // Wait for navigation to complete
-    await this.page.waitForLoadState("networkidle");
+    await this.page.waitForLoadState("load");
   }
 
   /**
@@ -65,4 +65,3 @@ export class NewTabPage {
     });
   }
 }
-
