@@ -16,10 +16,10 @@ The CI workflow has been updated to include a new `run-playwright-tests` job tha
 jobs:
   run-tests:
     # ... existing job ...
-  
+
   run-linting:
     # ... existing job ...
-  
+
   run-playwright-tests:
     name: Run Playwright Tests
     runs-on: ubuntu-latest
