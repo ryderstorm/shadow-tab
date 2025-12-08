@@ -120,3 +120,40 @@ jobs:
         uses: pre-commit/action@v3.0.1
         with:
           extra_args: --all-files
+
+  run-playwright-tests:
+    name: Run Playwright Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6.0.1
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v6.1.0
+        with:
+          node-version: "20"
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Playwright tests
+        run: npx playwright test
+
+      - name: Upload test report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+
+      - name: Upload test artifacts on failure
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-results
+          path: test-results/
+          retention-days: 7

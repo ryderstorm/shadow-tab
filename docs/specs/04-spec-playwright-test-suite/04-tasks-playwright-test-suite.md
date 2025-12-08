@@ -189,7 +189,7 @@
 - [x] 5.10 Write test case "should apply background color changes immediately" that changes color in options and verifies it applies to new tab page
 - [x] 5.11 Run `npx playwright test tests/e2e.spec.ts` and verify all tests pass
 
-### [ ] 6.0 CI/CD Integration and Documentation
+### [~] 6.0 CI/CD Integration and Documentation
 
 #### 6.0 Proof Artifact(s)
 
@@ -201,25 +201,25 @@
 
 #### 6.0 Tasks
 
-- [ ] 6.1 Read existing `.github/workflows/ci.yml` to understand current workflow structure
-- [ ] 6.2 Add new job `run-playwright-tests` to CI workflow (runs in parallel with existing jobs)
-- [ ] 6.3 Add step "Set up Node.js 20" to Playwright test job (use `actions/setup-node@v6.1.0`)
-- [ ] 6.4 Add step "Checkout code" to Playwright test job (use `actions/checkout@v6.0.1`)
-- [ ] 6.5 Add step "Install Playwright browsers" that runs `npx playwright install --with-deps`
-- [ ] 6.6 Add step "Install dependencies" that runs `npm install` (or `npm ci` for CI)
-- [ ] 6.7 Add step "Run Playwright tests" that runs `npx playwright test` in headless mode
-- [ ] 6.8 Configure Playwright config to generate HTML report and test results JSON for CI runs
-- [ ] 6.9 Add step "Upload test report" that uploads `playwright-report/` as GitHub Actions artifact (always, retention 30 days)
-- [ ] 6.10 Add step "Upload test artifacts on failure" that uploads `test-results/` (screenshots, videos, traces) as GitHub Actions artifact only on test failure (retention 7 days)
-- [ ] 6.11 Test CI workflow by pushing changes and verifying tests run in GitHub Actions
-- [ ] 6.12 Create `tests/README.md` documentation file
-- [ ] 6.13 Add "Overview" section to README explaining test suite purpose and structure
-- [ ] 6.14 Add "Setup" section to README with installation instructions (`npm install`, `npx playwright install --with-deps`)
-- [ ] 6.15 Add "Running Tests" section to README with commands for running all tests, specific test files, and in UI mode
-- [ ] 6.16 Add "Test Structure" section to README explaining Page Object Model pattern and test organization
-- [ ] 6.17 Add "Writing Tests" section to README with guidelines for adding new tests (using fixtures, page objects, locator patterns, storage helpers)
-- [ ] 6.18 Add "Test Data" section to README documenting test URL constants and their use cases
-- [ ] 6.19 Add "CI Integration" section to README explaining how tests run in GitHub Actions and artifact uploads
-- [ ] 6.20 Add "Troubleshooting" section to README with common issues and solutions
-- [ ] 6.21 Run `markdownlint --fix tests/README.md` to ensure documentation passes linting
-- [ ] 6.22 Verify all documentation follows markdownlint rules and is properly formatted
+- [x] 6.1 Read existing `.github/workflows/ci.yml` to understand current workflow structure
+- [x] 6.2 Add new job `run-playwright-tests` to CI workflow (runs in parallel with existing jobs)
+- [x] 6.3 Add step "Set up Node.js 20" to Playwright test job (use `actions/setup-node@v6.1.0`)
+- [x] 6.4 Add step "Checkout code" to Playwright test job (use `actions/checkout@v6.0.1`)
+- [x] 6.5 Add step "Install Playwright browsers" that runs `npx playwright install --with-deps`
+- [x] 6.6 Add step "Install dependencies" that runs `npm install` (or `npm ci` for CI)
+- [x] 6.7 Add step "Run Playwright tests" that runs `npx playwright test` in headless mode
+- [x] 6.8 Configure Playwright config to generate HTML report and test results JSON for CI runs
+- [x] 6.9 Add step "Upload test report" that uploads `playwright-report/` as GitHub Actions artifact (always, retention 30 days)
+- [x] 6.10 Add step "Upload test artifacts on failure" that uploads `test-results/` (screenshots, videos, traces) as GitHub Actions artifact only on test failure (retention 7 days)
+- [x] 6.11 Test CI workflow by pushing changes and verifying tests run in GitHub Actions
+- [x] 6.12 Create `tests/README.md` documentation file
+- [x] 6.13 Add "Overview" section to README explaining test suite purpose and structure
+- [x] 6.14 Add "Setup" section to README with installation instructions (`npm install`, `npx playwright install --with-deps`)
+- [x] 6.15 Add "Running Tests" section to README with commands for running all tests, specific test files, and in UI mode
+- [x] 6.16 Add "Test Structure" section to README explaining Page Object Model pattern and test organization
+- [x] 6.17 Add "Writing Tests" section to README with guidelines for adding new tests (using fixtures, page objects, locator patterns, storage helpers)
+- [x] 6.18 Add "Test Data" section to README documenting test URL constants and their use cases
+- [x] 6.19 Add "CI Integration" section to README explaining how tests run in GitHub Actions and artifact uploads
+- [x] 6.20 Add "Troubleshooting" section to README with common issues and solutions
+- [x] 6.21 Run `markdownlint --fix tests/README.md` to ensure documentation passes linting
+- [x] 6.22 Verify all documentation follows markdownlint rules and is properly formatted
