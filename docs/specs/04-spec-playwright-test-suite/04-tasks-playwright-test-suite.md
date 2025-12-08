@@ -165,7 +165,7 @@
 - [x] 4.32 Write test case "should handle URL validation with real URLs" that types various URL formats (valid and invalid) and verifies UI validation feedback appears correctly (no network mocking needed)
 - [x] 4.33 Run `npx playwright test tests/options.spec.ts` and verify all tests pass
 
-### [~] 5.0 End-to-End User Flow Testing
+### [x] 5.0 End-to-End User Flow Testing
 
 #### 5.0 Proof Artifact(s)
 
