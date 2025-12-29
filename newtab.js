@@ -60,20 +60,6 @@ function showError(message) {
 }
 
 /**
- * Hides error message and shows loading animation
- */
-function _hideError() {
-  const errorElement = document.getElementById("error-message");
-  const loadingElement = document.getElementById("loading");
-  if (errorElement) {
-    errorElement.classList.remove("show");
-  }
-  if (loadingElement) {
-    loadingElement.style.display = "flex";
-  }
-}
-
-/**
  * Applies background color to body element
  * @param {string} color - CSS color value
  */

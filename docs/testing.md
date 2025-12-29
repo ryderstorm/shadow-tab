@@ -25,15 +25,15 @@ The test suite uses [Playwright](https://playwright.dev/) for end-to-end testing
 
 1. Install project dependencies:
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
-1. Install Playwright browsers and system dependencies:
+2. Install Playwright browsers and system dependencies:
 
-```bash
-npx playwright install --with-deps
-```
+   ```bash
+   npx playwright install --with-deps
+   ```
 
 This command installs Chromium and all required system dependencies for running Playwright tests.
 
