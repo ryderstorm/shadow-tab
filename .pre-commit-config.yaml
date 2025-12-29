@@ -17,19 +17,19 @@ repos:
     rev: v6.0.0
     hooks:
       - id: check-yaml
-        args: ['--unsafe']  # Allow custom YAML tags
+        args: ["--unsafe"] # Allow custom YAML tags
       - id: check-toml
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: check-added-large-files
-        args: ['--maxkb=500']
+        args: ["--maxkb=500"]
 
   # Markdown linting
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.46.0
     hooks:
       - id: markdownlint
-        args: ['--fix']
+        args: ["--fix"]
         exclude: CHANGELOG.md
 
   # Conventional Commits enforcement
@@ -39,17 +39,56 @@ repos:
       - id: commitlint
         stages: [commit-msg]
         additional_dependencies:
-          - '@commitlint/config-conventional@19.6.0'
+          - "@commitlint/config-conventional@19.6.0"
 
   # Secret scanning
   - repo: https://github.com/gitleaks/gitleaks
     rev: v8.30.0
     hooks:
       - id: gitleaks
-        args: ['--redact']
+        args: ["--redact"]
 
   # Renovate config validator
   - repo: https://github.com/renovatebot/pre-commit-hooks
     rev: 42.39.2
     hooks:
       - id: renovate-config-validator
+
+  # TypeScript, ESLint, Prettier, HTMLHint, and Stylelint hooks
+  - repo: local
+    hooks:
+      - id: typescript-type-check
+        name: TypeScript Type Check
+        entry: npx tsc --noEmit
+        language: system
+        types: [file]
+        files: "\\.(ts|tsx)$"
+        pass_filenames: false
+
+      - id: eslint
+        name: ESLint
+        entry: npx eslint --fix
+        language: system
+        types: [file]
+        files: "\\.(js|jsx|ts|tsx)$"
+
+      - id: prettier
+        name: Prettier
+        entry: npx prettier --write
+        language: system
+        types: [file]
+        files: "\\.(js|jsx|ts|tsx|json|css|md)$"
+
+      - id: htmlhint
+        name: HTMLHint
+        entry: npx htmlhint
+        language: system
+        types: [file]
+        files: "\\.html$"
+
+      - id: stylelint
+        name: Stylelint
+        entry: npx stylelint --fix
+        language: system
+        types: [file]
+        files: "\\.css$"

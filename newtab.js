@@ -24,7 +24,8 @@ function validateURL(urlString) {
       const hostname = url.hostname;
       // Domain must contain at least one dot and match TLD pattern
       // TLD pattern: at least 2 characters, letters only
-      const domainPattern = /^[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
+      const domainPattern =
+        /^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
       if (!hostname || !domainPattern.test(hostname)) {
         return false;
       }
@@ -32,7 +33,7 @@ function validateURL(urlString) {
 
     // Allow any other scheme (chrome://, file://, data:, etc.) without domain validation
     return true;
-  } catch (e) {
+  } catch (_e) {
     // If URL constructor fails, check for common patterns
     // Allow relative URLs starting with / or ./
     if (trimmedUrl.startsWith("/") || trimmedUrl.startsWith("./")) {
@@ -59,20 +60,6 @@ function showError(message) {
 }
 
 /**
- * Hides error message and shows loading animation
- */
-function hideError() {
-  const errorElement = document.getElementById("error-message");
-  const loadingElement = document.getElementById("loading");
-  if (errorElement) {
-    errorElement.classList.remove("show");
-  }
-  if (loadingElement) {
-    loadingElement.style.display = "flex";
-  }
-}
-
-/**
  * Applies background color to body element
  * @param {string} color - CSS color value
  */
@@ -94,7 +81,9 @@ function applyBackgroundColor(color) {
  */
 function redirectToURL(url, delay) {
   if (!url || !validateURL(url)) {
-    showError("Invalid or missing URL. Please configure a valid URL in the extension options.");
+    showError(
+      "Invalid or missing URL. Please configure a valid URL in the extension options."
+    );
     console.error("[NewTab] Invalid URL:", url);
     return;
   }
@@ -125,8 +114,13 @@ function loadAndApplySettings() {
     ["url", "redirectDelay", "backgroundColor"],
     (result) => {
       if (chrome.runtime.lastError) {
-        console.error("[NewTab] Error loading settings:", chrome.runtime.lastError);
-        showError("Error loading settings. Please check the extension configuration.");
+        console.error(
+          "[NewTab] Error loading settings:",
+          chrome.runtime.lastError
+        );
+        showError(
+          "Error loading settings. Please check the extension configuration."
+        );
         return;
       }
 
@@ -134,7 +128,8 @@ function loadAndApplySettings() {
 
       // Apply background color immediately (before any redirect)
       const backgroundColor =
-        result.backgroundColor !== undefined && result.backgroundColor.trim() !== ""
+        result.backgroundColor !== undefined &&
+        result.backgroundColor.trim() !== ""
           ? result.backgroundColor
           : "#05060a";
       applyBackgroundColor(backgroundColor);

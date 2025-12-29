@@ -98,13 +98,21 @@ function validateStoredSettings() {
       }
 
       // Validate redirect delay
-      if (result.redirectDelay !== undefined && !validateRedirectDelay(result.redirectDelay)) {
+      if (
+        result.redirectDelay !== undefined &&
+        !validateRedirectDelay(result.redirectDelay)
+      ) {
         warnings.push("Stored redirect delay is invalid. Using default (0ms).");
       }
 
       // Validate background color
-      if (result.backgroundColor && !validateBackgroundColor(result.backgroundColor)) {
-        warnings.push("Stored background color is invalid. Using default (#05060a).");
+      if (
+        result.backgroundColor &&
+        !validateBackgroundColor(result.backgroundColor)
+      ) {
+        warnings.push(
+          "Stored background color is invalid. Using default (#05060a)."
+        );
       }
 
       // Show warnings if any, but don't block functionality

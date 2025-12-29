@@ -38,17 +38,18 @@ This document provides context and guidelines for AI assistants working with thi
 - `AGENTS.md`: This file - AI assistant guidelines
 - `docs/development.md`: Local development setup guide
 - `docs/ARCHITECTURE.md`: System architecture documentation
+- `docs/testing.md`: Testing guide with Playwright setup and patterns
 - `docs/specs/`: Specification documents and task breakdowns
 
 ## Key Files
 
-| File | Purpose |
-| --- | --- |
-| `manifest.json` | Chrome extension configuration and metadata |
-| `.pre-commit-config.yaml` | Pre-commit hooks for code quality |
-| `.github/workflows/ci.yml` | CI/CD pipeline configuration |
-| `.releaserc.toml` | Semantic versioning configuration |
-| `CONTRIBUTING.md` | Contribution guidelines and conventions |
+| File                       | Purpose                                     |
+| -------------------------- | ------------------------------------------- |
+| `manifest.json`            | Chrome extension configuration and metadata |
+| `.pre-commit-config.yaml`  | Pre-commit hooks for code quality           |
+| `.github/workflows/ci.yml` | CI/CD pipeline configuration                |
+| `.releaserc.toml`          | Semantic versioning configuration           |
+| `CONTRIBUTING.md`          | Contribution guidelines and conventions     |
 
 ## Quick Reference
 
@@ -113,9 +114,11 @@ git log --oneline -5
 
 ### Testing
 
-- Currently manual testing only
-- CI workflow includes placeholder steps for future automated testing
-- Test by loading extension in Chrome Developer Mode
+- **Automated Testing**: Playwright test suite with Page Object Model pattern
+- **Test Fixtures**: Custom fixtures for extension loading, page management, and storage operations
+- **CI Integration**: Tests run automatically in CI workflow
+- **Documentation**: See [docs/testing.md](docs/testing.md) for comprehensive testing guide
+- **Manual Testing**: Can also test by loading extension in Chrome Developer Mode
 
 ### Documentation
 
@@ -137,4 +140,5 @@ git log --oneline -5
 - Check `CONTRIBUTING.md` for contribution guidelines
 - Review `docs/development.md` for setup instructions
 - See `docs/ARCHITECTURE.md` for system architecture
+- Read `docs/testing.md` for testing patterns and best practices
 - Check existing issues and PRs for examples

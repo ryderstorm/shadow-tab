@@ -82,7 +82,11 @@ function validateRedirectDelay(delayValue) {
 
 ```javascript
 function validateBackgroundColor(colorValue) {
-  if (!colorValue || typeof colorValue !== "string" || colorValue.trim() === "") {
+  if (
+    !colorValue ||
+    typeof colorValue !== "string" ||
+    colorValue.trim() === ""
+  ) {
     return true; // Empty is valid (will use default)
   }
 
@@ -111,7 +115,8 @@ function validateBackgroundColor(colorValue) {
   }
 
   // Check hsl/hsla pattern
-  const hslPattern = /^hsla?\(\s*\d+\s*,\s*\d+%\s*,\s*\d+%\s*(,\s*[\d.]+)?\s*\)$/;
+  const hslPattern =
+    /^hsla?\(\s*\d+\s*,\s*\d+%\s*,\s*\d+%\s*(,\s*[\d.]+)?\s*\)$/;
   if (hslPattern.test(trimmedColor)) {
     return true;
   }
@@ -186,7 +191,9 @@ function loadSettings() {
       }
 
       // Load redirect delay (default to 0 if not set)
-      const redirectDelayInput = document.getElementById("redirect-delay-input");
+      const redirectDelayInput = document.getElementById(
+        "redirect-delay-input"
+      );
       if (redirectDelayInput) {
         redirectDelayInput.value =
           result.redirectDelay !== undefined ? result.redirectDelay : 0;
@@ -239,7 +246,9 @@ function handleRedirectDelayInput() {
 }
 
 function handleBackgroundColorInput() {
-  const backgroundColorInput = document.getElementById("background-color-input");
+  const backgroundColorInput = document.getElementById(
+    "background-color-input"
+  );
   const colorValue = backgroundColorInput.value.trim();
 
   if (colorValue === "") {
@@ -279,7 +288,9 @@ async function handleFormSubmit(event) {
 
   const urlInput = document.getElementById("url-input");
   const redirectDelayInput = document.getElementById("redirect-delay-input");
-  const backgroundColorInput = document.getElementById("background-color-input");
+  const backgroundColorInput = document.getElementById(
+    "background-color-input"
+  );
 
   const urlValue = urlInput.value.trim();
   const redirectDelayValue = redirectDelayInput.value
@@ -357,9 +368,7 @@ redirectDelayInput.value =
 
 // Load background color (default to #05060a if not set)
 backgroundColorInput.value =
-  result.backgroundColor !== undefined
-    ? result.backgroundColor
-    : "#05060a";
+  result.backgroundColor !== undefined ? result.backgroundColor : "#05060a";
 ```
 
 **Verification:**

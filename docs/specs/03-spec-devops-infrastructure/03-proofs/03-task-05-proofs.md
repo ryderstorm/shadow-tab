@@ -13,9 +13,7 @@ The branch protection ruleset configuration file has been created:
   "enforcement": "active",
   "conditions": {
     "ref_name": {
-      "include": [
-        "refs/heads/main"
-      ]
+      "include": ["refs/heads/main"]
     }
   },
   "rules": [
@@ -33,9 +31,7 @@ The branch protection ruleset configuration file has been created:
         "required_approving_review_count": 1,
         "require_last_push_approval": true,
         "required_review_thread_resolution": true,
-        "allowed_merge_methods": [
-          "squash"
-        ]
+        "allowed_merge_methods": ["squash"]
       }
     },
     {

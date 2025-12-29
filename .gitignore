@@ -1,1 +1,9 @@
 .temp
+
+# Node.js dependencies
+node_modules/
+
+# Playwright test artifacts
+test-results/
+playwright-report/
+playwright/.cache/

@@ -114,9 +114,18 @@ This project uses Gitleaks to scan for hardcoded secrets before commits. The pre
 
 ## Testing Guidelines
 
+### Automated Testing
+
+The project includes a comprehensive Playwright test suite. See [testing.md](testing.md) for detailed information on:
+
+- Running tests (`npm test`, `npm run test:ui`)
+- Writing new tests using fixtures and Page Object Model
+- Test patterns and best practices
+- Troubleshooting common issues
+
 ### Manual Testing
 
-Currently, testing is done manually. Follow this checklist:
+For manual verification, follow this checklist:
 
 - [ ] Extension loads without errors
 - [ ] Options page displays correctly
@@ -126,10 +135,6 @@ Currently, testing is done manually. Follow this checklist:
 - [ ] Background color changes apply
 - [ ] URL validation works for various formats
 - [ ] Extension works after browser restart
-
-### Future Automated Testing
-
-The CI workflow includes placeholder steps for future automated testing framework integration. When implemented, tests will run automatically on pull requests.
 
 ## Troubleshooting
 
@@ -158,6 +163,7 @@ If you encounter git credential issues with pre-commit hooks:
 - [Chrome Extension Documentation](https://developer.chrome.com/docs/extensions/)
 - [Conventional Commits](https://www.conventionalcommits.org/)
 - [Pre-commit Documentation](https://pre-commit.com/)
+- [Testing Guide](testing.md) - Comprehensive Playwright testing documentation
 
 ## Getting Help
 

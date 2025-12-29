@@ -87,7 +87,9 @@ function applyBackgroundColor(color) {
  */
 function redirectToURL(url, delay) {
   if (!url || !validateURL(url)) {
-    showError("Invalid or missing URL. Please configure a valid URL in the extension options.");
+    showError(
+      "Invalid or missing URL. Please configure a valid URL in the extension options."
+    );
     console.error("[NewTab] Invalid URL:", url);
     return;
   }
@@ -118,8 +120,13 @@ function loadAndApplySettings() {
     ["url", "redirectDelay", "backgroundColor"],
     (result) => {
       if (chrome.runtime.lastError) {
-        console.error("[NewTab] Error loading settings:", chrome.runtime.lastError);
-        showError("Error loading settings. Please check the extension configuration.");
+        console.error(
+          "[NewTab] Error loading settings:",
+          chrome.runtime.lastError
+        );
+        showError(
+          "Error loading settings. Please check the extension configuration."
+        );
         return;
       }
 
@@ -127,7 +134,8 @@ function loadAndApplySettings() {
 
       // Apply background color immediately (before any redirect)
       const backgroundColor =
-        result.backgroundColor !== undefined && result.backgroundColor.trim() !== ""
+        result.backgroundColor !== undefined &&
+        result.backgroundColor.trim() !== ""
           ? result.backgroundColor
           : "#05060a";
       applyBackgroundColor(backgroundColor);

@@ -10,42 +10,23 @@ The Renovate Bot configuration file has been created:
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Renovate Bot configuration for Dark New Tab Homepage Chrome extension",
-  "extends": [
-    "config:best-practices",
-    ":semanticCommits",
-    ":enablePreCommit"
-  ],
-  "labels": [
-    "dependencies"
-  ],
+  "extends": ["config:best-practices", ":semanticCommits", ":enablePreCommit"],
+  "labels": ["dependencies"],
   "reviewersFromCodeOwners": true,
   "packageRules": [
     {
-      "matchUpdateTypes": [
-        "minor",
-        "patch",
-        "pin",
-        "digest"
-      ],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true,
       "automergeType": "pr",
       "automergeStrategy": "auto"
     },
     {
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
+      "matchUpdateTypes": ["minor", "patch"],
       "groupName": "non-major dependencies",
       "groupSlug": "non-major"
     }
   ],
-  "ignorePaths": [
-    "node_modules/**",
-    "vendor/**",
-    "examples/**",
-    "test/**"
-  ]
+  "ignorePaths": ["node_modules/**", "vendor/**", "examples/**", "test/**"]
 }
 ```
 

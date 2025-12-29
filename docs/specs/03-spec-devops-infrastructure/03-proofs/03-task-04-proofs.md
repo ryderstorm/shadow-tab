@@ -12,11 +12,11 @@ The markdownlint configuration file has been created:
 
 # Disable rules that are too strict for documentation
 default: true
-MD013: false  # Line length - disabled for code blocks and long URLs
-MD024: false  # Multiple headers with the same content - disabled for FAQ sections
-MD033: false  # Inline HTML - allowed for flexibility
-MD034: false  # Bare URLs - disabled to allow plain URLs in documentation
-MD041: false  # First line should be a top-level heading - disabled for flexibility
+MD013: false # Line length - disabled for code blocks and long URLs
+MD024: false # Multiple headers with the same content - disabled for FAQ sections
+MD033: false # Inline HTML - allowed for flexibility
+MD034: false # Bare URLs - disabled to allow plain URLs in documentation
+MD041: false # First line should be a top-level heading - disabled for flexibility
 ```
 
 ### `CONTRIBUTING.md` Exists

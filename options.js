@@ -3,7 +3,7 @@
 /**
  * Preset color themes
  */
-const PRESET_COLORS = [
+const _PRESET_COLORS = [
   { name: "Midnight Blue", value: "#191970" },
   { name: "Charcoal", value: "#36454F" },
   { name: "Deep Purple", value: "#2D1B3D" },
@@ -40,7 +40,8 @@ function validateURL(urlString) {
       const hostname = url.hostname;
       // Domain must contain at least one dot and match TLD pattern
       // TLD pattern: at least 2 characters, letters only
-      const domainPattern = /^[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
+      const domainPattern =
+        /^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
       if (!hostname || !domainPattern.test(hostname)) {
         return false;
       }
@@ -48,7 +49,7 @@ function validateURL(urlString) {
 
     // Allow any other scheme (chrome://, file://, data:, etc.) without domain validation
     return true;
-  } catch (e) {
+  } catch (_e) {
     // If URL constructor fails, check for common patterns
     // Allow relative URLs starting with / or ./
     if (trimmedUrl.startsWith("/") || trimmedUrl.startsWith("./")) {
@@ -155,7 +156,7 @@ async function resolveDomain(urlString) {
       showURLError("URL is unreachable or network error occurred.");
       return false;
     }
-  } catch (e) {
+  } catch (_e) {
     showURLValidationMessage("", false);
     showURLError("Invalid URL format.");
     return false;
@@ -224,7 +225,11 @@ function validateRedirectDelay(delayValue) {
  * @returns {boolean} - True if color is valid, false otherwise
  */
 function validateBackgroundColor(colorValue) {
-  if (!colorValue || typeof colorValue !== "string" || colorValue.trim() === "") {
+  if (
+    !colorValue ||
+    typeof colorValue !== "string" ||
+    colorValue.trim() === ""
+  ) {
     return true; // Empty is valid (will use default)
   }
 
@@ -253,7 +258,8 @@ function validateBackgroundColor(colorValue) {
   }
 
   // Check hsl/hsla pattern
-  const hslPattern = /^hsla?\(\s*\d+\s*,\s*\d+%\s*,\s*\d+%\s*(,\s*[\d.]+)?\s*\)$/;
+  const hslPattern =
+    /^hsla?\(\s*\d+\s*,\s*\d+%\s*,\s*\d+%\s*(,\s*[\d.]+)?\s*\)$/;
   if (hslPattern.test(trimmedColor)) {
     return true;
   }
@@ -298,7 +304,11 @@ function showBackgroundColorError(message) {
   if (errorElement) {
     // Include example formats if not already present
     let errorMessage = message;
-    if (!message.includes("e.g.,") && !message.includes("example") && !message.includes("hex:")) {
+    if (
+      !message.includes("e.g.,") &&
+      !message.includes("example") &&
+      !message.includes("hex:")
+    ) {
       errorMessage = `${message} (hex: #05060a, rgb: rgb(5,6,10), or named: black)`;
     }
     errorElement.textContent = errorMessage;
@@ -361,7 +371,10 @@ async function saveSettings(url, redirectDelay, backgroundColor) {
     console.log("[Options] Saving settings:", settings);
     chrome.storage.local.set(settings, () => {
       if (chrome.runtime.lastError) {
-        console.error("[Options] Error saving settings:", chrome.runtime.lastError);
+        console.error(
+          "[Options] Error saving settings:",
+          chrome.runtime.lastError
+        );
         reject(new Error(chrome.runtime.lastError.message));
       } else {
         console.log("[Options] Settings saved successfully");
@@ -405,7 +418,10 @@ function validateStoredSettings() {
     ["url", "redirectDelay", "backgroundColor"],
     (result) => {
       if (chrome.runtime.lastError) {
-        console.error("[Options] Error loading settings for validation:", chrome.runtime.lastError);
+        console.error(
+          "[Options] Error loading settings for validation:",
+          chrome.runtime.lastError
+        );
         return;
       }
 
@@ -418,15 +434,29 @@ function validateStoredSettings() {
       }
 
       // Validate redirect delay
-      if (result.redirectDelay !== undefined && !validateRedirectDelay(result.redirectDelay)) {
+      if (
+        result.redirectDelay !== undefined &&
+        !validateRedirectDelay(result.redirectDelay)
+      ) {
         warnings.push("Stored redirect delay is invalid. Using default (0ms).");
-        console.warn("[Options] Invalid stored redirect delay:", result.redirectDelay);
+        console.warn(
+          "[Options] Invalid stored redirect delay:",
+          result.redirectDelay
+        );
       }
 
       // Validate background color
-      if (result.backgroundColor && !validateBackgroundColor(result.backgroundColor)) {
-        warnings.push("Stored background color is invalid. Using default (#05060a).");
-        console.warn("[Options] Invalid stored background color:", result.backgroundColor);
+      if (
+        result.backgroundColor &&
+        !validateBackgroundColor(result.backgroundColor)
+      ) {
+        warnings.push(
+          "Stored background color is invalid. Using default (#05060a)."
+        );
+        console.warn(
+          "[Options] Invalid stored background color:",
+          result.backgroundColor
+        );
       }
 
       // Show warnings if any, but don't block functionality
@@ -461,7 +491,9 @@ function applyBackgroundColorToPage(color) {
  */
 function updateColorInputs(colorValue) {
   const colorPicker = document.getElementById("color-picker");
-  const backgroundColorInput = document.getElementById("background-color-input");
+  const backgroundColorInput = document.getElementById(
+    "background-color-input"
+  );
 
   if (colorPicker && colorValue) {
     colorPicker.value = colorValue;
@@ -479,7 +511,10 @@ function loadSettings() {
     ["url", "redirectDelay", "backgroundColor"],
     (result) => {
       if (chrome.runtime.lastError) {
-        console.error("[Options] Error loading settings:", chrome.runtime.lastError);
+        console.error(
+          "[Options] Error loading settings:",
+          chrome.runtime.lastError
+        );
         return;
       }
 
@@ -499,17 +534,21 @@ function loadSettings() {
       }
 
       // Load redirect delay (default to 0 if not set)
-      const redirectDelayInput = document.getElementById("redirect-delay-input");
+      const redirectDelayInput = document.getElementById(
+        "redirect-delay-input"
+      );
       if (redirectDelayInput) {
-        const delayValue = result.redirectDelay !== undefined ? result.redirectDelay : 0;
+        const delayValue =
+          result.redirectDelay !== undefined ? result.redirectDelay : 0;
         redirectDelayInput.value = delayValue;
         console.log("[Options] Loaded redirect delay:", delayValue, "ms");
       }
 
       // Load background color (default to #05060a if not set)
-      const colorValue = result.backgroundColor !== undefined
-        ? result.backgroundColor
-        : "#05060a";
+      const colorValue =
+        result.backgroundColor !== undefined
+          ? result.backgroundColor
+          : "#05060a";
       updateColorInputs(colorValue);
       applyBackgroundColorToPage(colorValue);
       console.log("[Options] Loaded background color:", colorValue);
@@ -530,7 +569,9 @@ async function handleFormSubmit(event) {
 
   const urlInput = document.getElementById("url-input");
   const redirectDelayInput = document.getElementById("redirect-delay-input");
-  const backgroundColorInput = document.getElementById("background-color-input");
+  const backgroundColorInput = document.getElementById(
+    "background-color-input"
+  );
 
   const urlValue = urlInput.value.trim();
   const redirectDelayValue = redirectDelayInput.value
@@ -554,9 +595,7 @@ async function handleFormSubmit(event) {
   }
 
   if (!validateBackgroundColor(backgroundColorValue)) {
-    showBackgroundColorError(
-      "Please enter a valid CSS color"
-    );
+    showBackgroundColorError("Please enter a valid CSS color");
     hasErrors = true;
   }
 
@@ -643,7 +682,9 @@ function handleRedirectDelayInput() {
  * Handles real-time background color validation on input
  */
 function handleBackgroundColorInput() {
-  const backgroundColorInput = document.getElementById("background-color-input");
+  const backgroundColorInput = document.getElementById(
+    "background-color-input"
+  );
   const colorValue = backgroundColorInput.value.trim();
 
   if (colorValue === "") {
@@ -652,9 +693,7 @@ function handleBackgroundColorInput() {
   }
 
   if (!validateBackgroundColor(colorValue)) {
-    showBackgroundColorError(
-      "Please enter a valid CSS color"
-    );
+    showBackgroundColorError("Please enter a valid CSS color");
   } else {
     hideBackgroundColorError();
     // Update color picker to match text input
@@ -687,7 +726,9 @@ function handleBackgroundColorInput() {
  */
 function handleColorPickerInput() {
   const colorPicker = document.getElementById("color-picker");
-  const backgroundColorInput = document.getElementById("background-color-input");
+  const backgroundColorInput = document.getElementById(
+    "background-color-input"
+  );
   const colorValue = colorPicker.value;
 
   if (backgroundColorInput && colorValue) {
@@ -743,7 +784,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Set up real-time validation on background color input
-  const backgroundColorInput = document.getElementById("background-color-input");
+  const backgroundColorInput = document.getElementById(
+    "background-color-input"
+  );
   if (backgroundColorInput) {
     backgroundColorInput.addEventListener("input", handleBackgroundColorInput);
     backgroundColorInput.addEventListener("blur", handleBackgroundColorInput);

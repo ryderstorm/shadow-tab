@@ -37,7 +37,11 @@ function showBackgroundColorError(message) {
   if (errorElement) {
     // Include example formats if not already present
     let errorMessage = message;
-    if (!message.includes("e.g.,") && !message.includes("example") && !message.includes("hex:")) {
+    if (
+      !message.includes("e.g.,") &&
+      !message.includes("example") &&
+      !message.includes("hex:")
+    ) {
       errorMessage = `${message} (hex: #05060a, rgb: rgb(5,6,10), or named: black)`;
     }
     errorElement.textContent = errorMessage;

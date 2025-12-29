@@ -20,7 +20,8 @@ The enhanced `validateURL()` function in `options.js` and `newtab.js` includes d
 ```javascript
 // Domain must contain at least one dot and match TLD pattern
 // TLD pattern: at least 2 characters, letters only
-const domainPattern = /^[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
+const domainPattern =
+  /^[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
 ```
 
 This pattern:

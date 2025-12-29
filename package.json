@@ -1,0 +1,42 @@
+{
+  "name": "dark-homepage-newtab",
+  "version": "0.1.0",
+  "description": "Dark new tab that loads my self-hosted homepage.dev dashboard.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:list": "playwright test --list",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:html": "htmlhint '*.html'",
+    "lint:css": "stylelint '*.css'",
+    "lint:css:fix": "stylelint '*.css' --fix",
+    "lint:all": "npm run lint && npm run lint:html && npm run lint:css",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/chrome": "^0.1.32",
+    "@types/node": "^24.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.48.1",
+    "@typescript-eslint/parser": "^8.48.1",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-playwright": "^2.4.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^16.5.0",
+    "htmlhint": "^1.8.0",
+    "prettier": "^3.7.4",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^39.0.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

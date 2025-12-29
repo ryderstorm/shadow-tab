@@ -108,12 +108,12 @@ jobs:
       - name: Set up Python 3.12
         uses: actions/setup-python@v6.1.0
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
       - name: Set up Node.js 20
         uses: actions/setup-node@v6.1.0
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Run pre-commit hooks
         uses: pre-commit/action@v3.0.1

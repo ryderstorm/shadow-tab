@@ -30,6 +30,9 @@ This project uses pre-commit hooks to ensure code quality and consistency. Hooks
 - Conventional Commits format
 - Secret scanning (Gitleaks)
 - Renovate configuration validation
+- TypeScript type checking
+- ESLint linting (JavaScript and TypeScript)
+- Prettier code formatting
 
 #### Installation
 
@@ -58,6 +61,33 @@ To skip hooks (not recommended):
 ```bash
 git commit --no-verify
 ```
+
+#### Manual Linting and Formatting
+
+You can run linting and formatting manually without committing:
+
+```bash
+# Run ESLint to check for issues
+npm run lint
+
+# Run ESLint and auto-fix issues
+npm run lint:fix
+
+# Format all files with Prettier
+npm run format
+
+# Check if files are formatted correctly (without changing them)
+npm run format:check
+
+# Run TypeScript type checking
+npm run type-check
+```
+
+#### Fixing Common Linting Issues
+
+- **ESLint errors**: Run `npm run lint:fix` to automatically fix most issues
+- **Prettier formatting**: Run `npm run format` to format all files
+- **TypeScript errors**: Fix type errors manually, then run `npm run type-check` to verify
 
 ## Conventional Commits
 

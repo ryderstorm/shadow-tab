@@ -32,7 +32,13 @@ The color picker is positioned alongside the text input:
 ```html
 <div class="color-input-wrapper">
   <input type="color" id="color-picker" name="colorPicker" value="#05060a" />
-  <input type="text" id="background-color-input" name="backgroundColor" placeholder="#05060a" autocomplete="off" />
+  <input
+    type="text"
+    id="background-color-input"
+    name="backgroundColor"
+    placeholder="#05060a"
+    autocomplete="off"
+  />
 </div>
 ```
 
@@ -42,7 +48,13 @@ Preset buttons are arranged in a 5-column grid:
 
 ```html
 <div class="preset-colors">
-  <button type="button" class="preset-color-btn" data-color="#191970" aria-label="Midnight Blue" title="Midnight Blue"></button>
+  <button
+    type="button"
+    class="preset-color-btn"
+    data-color="#191970"
+    aria-label="Midnight Blue"
+    title="Midnight Blue"
+  ></button>
   <!-- ... 9 more preset buttons ... -->
 </div>
 ```
@@ -78,7 +90,9 @@ function handleBackgroundColorInput() {
 // Color picker → Text input
 function handleColorPickerInput() {
   const colorPicker = document.getElementById("color-picker");
-  const backgroundColorInput = document.getElementById("background-color-input");
+  const backgroundColorInput = document.getElementById(
+    "background-color-input"
+  );
   const colorValue = colorPicker.value;
 
   if (backgroundColorInput && colorValue) {

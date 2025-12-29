@@ -265,7 +265,11 @@ html,
 body {
   background: #05060a; /* very dark, no flash */
   color: #e5e5e5;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
 }
 ```

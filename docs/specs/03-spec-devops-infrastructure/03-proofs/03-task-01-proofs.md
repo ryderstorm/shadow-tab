@@ -26,19 +26,19 @@ repos:
     rev: v4.6.0
     hooks:
       - id: check-yaml
-        args: ['--unsafe']  # Allow custom YAML tags
+        args: ["--unsafe"] # Allow custom YAML tags
       - id: check-toml
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: check-added-large-files
-        args: ['--maxkb=500']
+        args: ["--maxkb=500"]
 
   # Markdown linting
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.42.0
     hooks:
       - id: markdownlint
-        args: ['--fix']
+        args: ["--fix"]
         exclude: CHANGELOG.md
 
   # Conventional Commits enforcement
@@ -48,14 +48,14 @@ repos:
       - id: commitlint
         stages: [commit-msg]
         additional_dependencies:
-          - '@commitlint/config-conventional@19.6.0'
+          - "@commitlint/config-conventional@19.6.0"
 
   # Secret scanning
   - repo: https://github.com/gitleaks/gitleaks
     rev: v8.22.0
     hooks:
       - id: gitleaks
-        args: ['--redact']
+        args: ["--redact"]
 
   # Renovate config validator
   - repo: https://github.com/renovatebot/pre-commit-hooks

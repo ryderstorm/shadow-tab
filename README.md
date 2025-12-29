@@ -135,6 +135,7 @@ dark-homepage-newtab/
 ├── options.html           # Options page HTML
 ├── options.js             # Options page JavaScript
 ├── options.css            # Options page styles
+├── tests/                 # Playwright test suite
 └── README.md              # This file
 ```
 
@@ -144,6 +145,15 @@ dark-homepage-newtab/
 - Consistent code formatting
 - Dark theme aesthetic maintained throughout
 - System fonts for consistency
+
+### Testing
+
+The project includes a comprehensive Playwright test suite. See [docs/testing.md](docs/testing.md) for detailed information on:
+
+- Running tests
+- Writing new tests
+- Test fixtures and Page Object Model patterns
+- Best practices and troubleshooting
 
 ## License
 

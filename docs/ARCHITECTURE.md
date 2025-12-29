@@ -331,6 +331,7 @@ flowchart LR
 - **Runtime**: Chrome Extension APIs (Manifest V3)
 - **Storage**: chrome.storage.local API
 - **Styling**: CSS3 with dark theme
+- **Testing**: Playwright with TypeScript and Page Object Model
 - **Version Management**: python-semantic-release
 - **CI/CD**: GitHub Actions
 - **Code Quality**: pre-commit hooks, markdownlint, commitlint
@@ -339,10 +340,19 @@ flowchart LR
 
 ### Planned Features
 
-- Automated testing framework integration
 - HTML/CSS/JS linting tools
 - Chrome Web Store publishing automation
 - Additional customization options
+- Expanded test coverage for edge cases
+
+### Testing
+
+The project uses Playwright for automated end-to-end testing. See [testing.md](testing.md) for comprehensive documentation on:
+
+- Test suite architecture and fixtures
+- Page Object Model implementation
+- Writing and running tests
+- CI/CD integration
 
 ### Architecture Considerations
 

@@ -65,11 +65,7 @@ All buttons have descriptive ARIA labels:
 Error messages are associated with their input fields using `aria-describedby`:
 
 ```html
-<input
-  type="text"
-  id="url-input"
-  aria-describedby="url-error"
-/>
+<input type="text" id="url-input" aria-describedby="url-error" />
 <div id="url-error" class="error-message" role="alert" aria-live="polite"></div>
 ```
 
@@ -79,7 +75,12 @@ Error and success messages use `aria-live="polite"` for screen reader announceme
 
 ```html
 <div id="url-error" class="error-message" role="alert" aria-live="polite"></div>
-<div id="save-success" class="success-message" role="status" aria-live="polite"></div>
+<div
+  id="save-success"
+  class="success-message"
+  role="status"
+  aria-live="polite"
+></div>
 ```
 
 ### Focus Indicators
