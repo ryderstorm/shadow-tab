@@ -16,14 +16,14 @@ This task list breaks down the Shadow Tab rebrand into demoable units of work th
 
 #### 1.0 Tasks
 
-- [ ] 1.1 Create `assets/icons/` directory structure
-- [ ] 1.2 Move PNG icon exports from `.temp/icon-exports/` to `assets/icons/`
-- [ ] 1.3 Copy `icon.svg` from `.temp/` to root directory
-- [ ] 1.4 Update `manifest.json` to reference new icon paths
-- [ ] 1.5 Create `favicon.ico` from SVG for options page
-- [ ] 1.6 Add favicon link to `options.html`
-- [ ] 1.7 Copy `palette.png` to documentation for reference
-- [ ] 1.8 Test icon display in Chrome Developer Mode
+- [x] 1.1 Create `assets/icons/` directory structure
+- [x] 1.2 Move PNG icon exports from `.temp/icon-exports/` to `assets/icons/`
+- [x] 1.3 Copy `icon.svg` from `.temp/` to root directory
+- [x] 1.4 Update `manifest.json` to reference new icon paths
+- [x] 1.5 Create `favicon.ico` from SVG for options page
+- [x] 1.6 Add favicon link to `options.html`
+- [x] 1.7 Copy `palette.png` to documentation for reference
+- [x] 1.8 Test icon display in Chrome Developer Mode
 
 #### 1.0 Relevant Files
 
