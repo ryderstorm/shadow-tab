@@ -73,10 +73,10 @@ Customize the background color of both the new tab page and options page.
 
 **Supported formats**:
 
-- Hex: `#05060a`
-- RGB: `rgb(5,6,10)`
-- RGBA: `rgba(5,6,10,1)`
-- HSL: `hsl(220, 50%, 3%)`
+- Hex: `#090909`
+- RGB: `rgb(9,9,9)`
+- RGBA: `rgba(9,9,9,1)`
+- HSL: `hsl(0, 0%, 4%)`
 - Named colors: `black`, `darkblue`, etc.
 
 **Preset Colors Available**:
@@ -87,7 +87,7 @@ Customize the background color of both the new tab page and options page.
 - Obsidian (#0B0B0B)
 - Dark Navy (#000080)
 - Dark Slate (#2F4F4F)
-- Rich Black (#05060a) - Default
+- Shadow Black (#090909) - Default
 - Midnight (#000e34)
 - Dark Slate Gray (#2D2D2D)
 - Deep Indigo (#4B0082)
