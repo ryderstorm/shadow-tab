@@ -88,7 +88,7 @@ test.describe("Extension Installation and Setup", () => {
     expect(response?.status()).toBe(200);
 
     // Verify page title
-    await expect(page).toHaveTitle(/Dark New Tab Homepage - Options/i);
+    await expect(page).toHaveTitle(/Shadow Tab Settings/i);
 
     // Verify key form elements exist
     await expect(page.locator("#url-input")).toBeVisible();

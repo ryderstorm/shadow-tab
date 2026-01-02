@@ -4,7 +4,7 @@ This document provides context and guidelines for AI assistants working with thi
 
 ## Repository Overview
 
-**Dark New Tab Homepage** is a Chrome extension that replaces the default new tab page with a customizable dark-themed homepage that redirects to a user-configured URL.
+**Shadow Tab** is a Chrome extension that replaces the default new tab page with a customizable dark-themed homepage that redirects to a user-configured URL.
 
 ## Project Structure
 

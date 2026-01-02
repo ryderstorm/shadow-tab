@@ -1,6 +1,6 @@
 # Testing Guide
 
-This document provides comprehensive guidance on the test suite setup, patterns, and best practices for the Dark New Tab Homepage Chrome extension.
+This document provides comprehensive guidance on the test suite setup, patterns, and best practices for the Shadow Tab Chrome extension.
 
 ## Overview
 

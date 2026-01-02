@@ -96,7 +96,7 @@ Customize the background color of both the new tab page and options page.
 
 1. **Configure Settings**:
    - Right-click the extension icon → Options
-   - Or navigate to `chrome://extensions/` → Find "Dark New Tab Homepage" → Click "Options"
+   - Or navigate to `chrome://extensions/` → Find "Shadow Tab" → Click "Options"
 
 2. **Set Your URL**:
    - Enter your desired new tab URL
