@@ -17,16 +17,9 @@ test.describe("Extension Installation and Setup", () => {
   });
 
   test("should initialize service worker", async ({ context, extensionId }) => {
-    // Note: This extension doesn't have a service worker (no background script in manifest)
-    // So we verify that extension ID is valid instead
-    // In a real extension with service worker, we would check:
-    // const serviceWorkers = context.serviceWorkers();
-    // expect(serviceWorkers.length).toBeGreaterThan(0);
-    // expect(serviceWorkers[0].url()).toContain(extensionId);
-
-    // For this extension, we verify the extension ID is valid
-    expect(extensionId).toBeDefined();
-    expect(extensionId).toMatch(/^[a-z]{32}$/);
+    const serviceWorkers = context.serviceWorkers();
+    expect(serviceWorkers.length).toBeGreaterThan(0);
+    expect(serviceWorkers[0].url()).toContain(extensionId);
 
     // Verify extension is accessible by checking manifest
     const page = await context.newPage();
