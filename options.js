@@ -4,16 +4,16 @@
  * Preset color themes
  */
 const _PRESET_COLORS = [
-  { name: "Shadow Black", value: "#090909" },
-  { name: "Shadow Grey", value: "#222227" },
-  { name: "True Cobalt", value: "#002078" },
+  { name: "Light Grey", value: "#A9A9A9" },
+  { name: "Charcoal", value: "#808080" },
   { name: "Royal Azure", value: "#1d4ed8" },
-  { name: "Deep Black", value: "#000000" },
-  { name: "Dark Slate", value: "#1a1a1a" },
-  { name: "Midnight Blue", value: "#191970" },
-  { name: "Charcoal", value: "#36454f" },
+  { name: "True Cobalt", value: "#002078" },
   { name: "Dark Navy", value: "#000080" },
-  { name: "Obsidian", value: "#0b0b0b" },
+  { name: "Midnight Blue", value: "#191970" },
+  { name: "Shadow Grey", value: "#222227" },
+  { name: "Dark Slate", value: "#1a1a1a" },
+  { name: "Shadow Black", value: "#090909" },
+  { name: "Deep Black", value: "#000000" },
 ];
 
 /**

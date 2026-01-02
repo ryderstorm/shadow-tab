@@ -1,4 +1,10 @@
-@import url('colors.css');
+@import url("colors.css");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html,
 body {
@@ -23,6 +29,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   padding: 20px;
+  overflow-x: hidden;
 }
 
 .container {
@@ -35,6 +42,15 @@ h1 {
   font-weight: 600;
   margin-bottom: 32px;
   color: var(--shadow-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-icon {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
 }
 
 .form-group {
@@ -74,7 +90,7 @@ label {
   width: 12px;
   height: 12px;
   border: 2px solid var(--shadow-border);
-    border-top-color: var(--shadow-text);
+  border-top-color: var(--shadow-text);
   border-radius: 50%;
   display: inline-block;
   animation: spin 0.8s linear infinite;
@@ -133,7 +149,7 @@ input[type="number"] {
     "Segoe UI",
     sans-serif;
   background: var(--shadow-input-bg);
-    border: 1px solid var(--shadow-input-border);
+  border: 1px solid var(--shadow-input-border);
   border-radius: 4px;
   color: var(--shadow-text-primary);
   box-sizing: border-box;

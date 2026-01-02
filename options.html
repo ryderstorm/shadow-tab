@@ -7,12 +7,16 @@
     <!-- Hint Chrome that this is dark UI -->
     <meta name="color-scheme" content="dark" />
 
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="assets/icons/icon-16x16.png" type="image/png" sizes="16x16" />
+    <link rel="icon" href="assets/icons/icon-32x32.png" type="image/png" sizes="32x32" />
     <link rel="stylesheet" href="options.css" />
   </head>
   <body>
     <div class="container">
-      <h1>Shadow Tab Settings</h1>
+      <h1>
+        <img class="page-icon" src="assets/icons/icon-48x48.png" alt="" aria-hidden="true" />
+        Shadow Tab Settings
+      </h1>
 
       <form id="options-form">
         <div class="form-group">
@@ -89,17 +93,17 @@
               <button
                 type="button"
                 class="preset-color-btn"
-                data-color="#191970"
-                aria-label="Midnight Blue preset color"
-                title="Midnight Blue"
+                data-color="#A9A9A9"
+                aria-label="Light Grey preset color"
+                title="Light Grey"
               ></button>
-              <span class="preset-color-label">Midnight Blue</span>
+              <span class="preset-color-label">Light Grey</span>
             </div>
             <div class="preset-color-item">
               <button
                 type="button"
                 class="preset-color-btn"
-                data-color="#36454F"
+                data-color="#808080"
                 aria-label="Charcoal preset color"
                 title="Charcoal"
               ></button>
@@ -109,21 +113,16 @@
               <button
                 type="button"
                 class="preset-color-btn"
-                data-color="#2D1B3D"
-                aria-label="Deep Purple preset color"
-                title="Deep Purple"
+                data-color="#1d4ed8"
+                aria-label="Royal Azure preset color"
+                title="Royal Azure"
               ></button>
-              <span class="preset-color-label">Deep Purple</span>
+              <span class="preset-color-label">Royal Azure</span>
             </div>
-            <div class="preset-color-item">
-              <button
-                type="button"
-                class="preset-color-btn"
-                data-color="#0B0B0B"
-                aria-label="Obsidian preset color"
-                title="Obsidian"
-              ></button>
-              <span class="preset-color-label">Obsidian</span>
+              <div class="preset-color-item">
+                <button type="button" class="preset-color-btn" data-color="#002078" aria-label="True Cobalt preset color"
+                  title="True Cobalt"></button>
+                <span class="preset-color-label">True Cobalt</span>
             </div>
             <div class="preset-color-item">
               <button
@@ -139,7 +138,27 @@
               <button
                 type="button"
                 class="preset-color-btn"
-                data-color="#2F4F4F"
+                data-color="#191970"
+                aria-label="Midnight Blue preset color"
+                title="Midnight Blue"
+              ></button>
+              <span class="preset-color-label">Midnight Blue</span>
+              </div>
+            <div class="preset-color-item">
+              <button
+                type="button"
+                class="preset-color-btn"
+                data-color="#222227"
+                aria-label="Shadow Grey preset color"
+                title="Shadow Grey"
+              ></button>
+              <span class="preset-color-label">Shadow Grey</span>
+            </div>
+            <div class="preset-color-item">
+              <button
+                type="button"
+                class="preset-color-btn"
+                data-color="#1a1a1a"
                 aria-label="Dark Slate preset color"
                 title="Dark Slate"
               ></button>
@@ -149,41 +168,21 @@
               <button
                 type="button"
                 class="preset-color-btn"
-                data-color="#05060a"
-                aria-label="Rich Black preset color"
-                title="Rich Black"
+                data-color="#090909"
+                aria-label="Shadow Black preset color"
+                title="Shadow Black"
               ></button>
-              <span class="preset-color-label">Rich Black</span>
+              <span class="preset-color-label">Shadow Black</span>
             </div>
             <div class="preset-color-item">
               <button
                 type="button"
                 class="preset-color-btn"
-                data-color="#000e34"
-                aria-label="Midnight preset color"
-                title="Midnight"
+                data-color="#000000"
+                aria-label="Deep Black preset color"
+                title="Deep Black"
               ></button>
-              <span class="preset-color-label">Midnight</span>
-            </div>
-            <div class="preset-color-item">
-              <button
-                type="button"
-                class="preset-color-btn"
-                data-color="#2D2D2D"
-                aria-label="Dark Slate Gray preset color"
-                title="Dark Slate Gray"
-              ></button>
-              <span class="preset-color-label">Dark Slate Gray</span>
-            </div>
-            <div class="preset-color-item">
-              <button
-                type="button"
-                class="preset-color-btn"
-                data-color="#4B0082"
-                aria-label="Deep Indigo preset color"
-                title="Deep Indigo"
-              ></button>
-              <span class="preset-color-label">Deep Indigo</span>
+              <span class="preset-color-label">Deep Black</span>
             </div>
           </div>
           <div
