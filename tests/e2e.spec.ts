@@ -16,7 +16,9 @@ test.describe("End-to-End User Flow", () => {
     await optionsPage.clickSave();
 
     // Ensure save has completed before opening a new tab (avoid race)
-    await expect(optionsPage.getSuccessMessage()).toBeVisible({ timeout: 2000 });
+    await expect(optionsPage.getSuccessMessage()).toBeVisible({
+      timeout: 2000,
+    });
 
     // Open new tab normally with chrome://newtab
     await newTabPage.openNewTab();
