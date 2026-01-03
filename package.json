@@ -1,13 +1,14 @@
 {
   "name": "dark-homepage-newtab",
   "version": "0.1.0",
-  "description": "Dark new tab that loads my self-hosted homepage.dev dashboard.",
+  "description": "Shadow Tab - A sleek dark new tab page that redirects to your custom URL with customizable colors and timing.",
   "private": true,
   "type": "module",
   "scripts": {
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "test:list": "playwright test --list",
+    "test:manual": "node scripts/manual-test.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:html": "htmlhint '*.html'",

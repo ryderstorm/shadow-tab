@@ -1,22 +1,6 @@
 // options.js
 
 /**
- * Preset color themes
- */
-const _PRESET_COLORS = [
-  { name: "Midnight Blue", value: "#191970" },
-  { name: "Charcoal", value: "#36454F" },
-  { name: "Deep Purple", value: "#2D1B3D" },
-  { name: "Obsidian", value: "#0B0B0B" },
-  { name: "Dark Navy", value: "#000080" },
-  { name: "Dark Slate", value: "#2F4F4F" },
-  { name: "Rich Black", value: "#05060a" },
-  { name: "Midnight", value: "#000e34" },
-  { name: "Dark Slate Gray", value: "#2D2D2D" },
-  { name: "Deep Indigo", value: "#4B0082" },
-];
-
-/**
  * Validates URL format
  * Supports: http, https, chrome://, file://, data:, and other standard URL schemes
  * For web URLs (http/https), requires valid domain format (must contain at least one dot and match TLD pattern)
@@ -451,7 +435,7 @@ function validateStoredSettings() {
         !validateBackgroundColor(result.backgroundColor)
       ) {
         warnings.push(
-          "Stored background color is invalid. Using default (#05060a)."
+          "Stored background color is invalid. Using default (#1a1a1a)."
         );
         console.warn(
           "[Options] Invalid stored background color:",
@@ -481,7 +465,7 @@ function applyBackgroundColorToPage(color) {
     document.body.style.backgroundColor = color.trim();
     console.log("[Options] Applied background color to page:", color.trim());
   } else {
-    document.body.style.backgroundColor = "#05060a";
+    document.body.style.backgroundColor = "#1a1a1a";
   }
 }
 
@@ -544,11 +528,11 @@ function loadSettings() {
         console.log("[Options] Loaded redirect delay:", delayValue, "ms");
       }
 
-      // Load background color (default to #05060a if not set)
+      // Load background color (default to #1a1a1a if not set)
       const colorValue =
         result.backgroundColor !== undefined
           ? result.backgroundColor
-          : "#05060a";
+          : "#1a1a1a";
       updateColorInputs(colorValue);
       applyBackgroundColorToPage(colorValue);
       console.log("[Options] Loaded background color:", colorValue);
@@ -577,7 +561,7 @@ async function handleFormSubmit(event) {
   const redirectDelayValue = redirectDelayInput.value
     ? Number(redirectDelayInput.value)
     : 0;
-  const backgroundColorValue = backgroundColorInput.value.trim() || "#05060a";
+  const backgroundColorValue = backgroundColorInput.value.trim() || "#1a1a1a";
 
   // Validate all fields before saving
   let hasErrors = false;

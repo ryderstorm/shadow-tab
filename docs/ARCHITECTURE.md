@@ -1,10 +1,8 @@
 # System Architecture
 
-This document describes the architecture of the Dark New Tab Homepage Chrome extension.
+This document describes the architecture of the Shadow Tab Chrome extension.
 
-## Overview
-
-Dark New Tab Homepage is a Chrome extension that replaces the default new tab page with a customizable dark-themed homepage that redirects to a user-configured URL.
+Shadow Tab is a Chrome extension that replaces the default new tab page with a customizable dark-themed homepage that redirects to a user-configured URL.
 
 ```mermaid
 flowchart TD

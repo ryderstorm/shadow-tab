@@ -1,6 +1,6 @@
-# Dark New Tab Homepage
+# Shadow Tab
 
-A Chrome extension that replaces the default new tab page with a customizable dark-themed homepage that redirects to your configured URL.
+Transform your new tab into a sleek, customizable dark workspace with Shadow Tab's modern design and powerful redirect capabilities.
 
 ## Installation
 
@@ -30,7 +30,7 @@ A Chrome extension that replaces the default new tab page with a customizable da
 
 - **Customizable New Tab URL**: Set any URL to redirect to when opening a new tab
 - **Redirect Delay**: Configure delay (0-60000ms) before redirect, with optional loading animation
-- **Dark Theme**: Beautiful dark color scheme (#05060a background, #e5e5e5 text)
+- **Dark Theme**: Beautiful Shadow Tab color palette (#090909 Shadow Black background, #e5e5e5 text) with True Cobalt and Royal Azure accents
 
 ### Enhanced Features
 
@@ -38,7 +38,7 @@ A Chrome extension that replaces the default new tab page with a customizable da
 - **Loading Animation**: Smooth pulsing dot animation during redirect delays
 - **Color Customization**:
   - Native HTML5 color picker for background color selection
-  - 10 preset dark theme colors (Midnight Blue, Charcoal, Deep Purple, etc.)
+  - 10 preset colors featuring Shadow Tab palette (Shadow Black, Shadow Grey, True Cobalt, Royal Azure, and more)
   - Live preview on options page
   - Smooth color transitions
 - **Accessibility**: Full keyboard navigation and screen reader support with ARIA labels
@@ -73,30 +73,30 @@ Customize the background color of both the new tab page and options page.
 
 **Supported formats**:
 
-- Hex: `#05060a`
-- RGB: `rgb(5,6,10)`
-- RGBA: `rgba(5,6,10,1)`
-- HSL: `hsl(220, 50%, 3%)`
+- Hex: `#090909`
+- RGB: `rgb(9,9,9)`
+- RGBA: `rgba(9,9,9,1)`
+- HSL: `hsl(0, 0%, 4%)`
 - Named colors: `black`, `darkblue`, etc.
 
 **Preset Colors Available**:
 
-- Midnight Blue (#191970)
-- Charcoal (#36454F)
-- Deep Purple (#2D1B3D)
-- Obsidian (#0B0B0B)
+- Light Grey (#666666)
+- Charcoal (#333333)
+- Royal Azure (#1d4ed8)
+- True Cobalt (#002078)
 - Dark Navy (#000080)
-- Dark Slate (#2F4F4F)
-- Rich Black (#05060a) - Default
-- Midnight (#000e34)
-- Dark Slate Gray (#2D2D2D)
-- Deep Indigo (#4B0082)
+- Midnight Blue (#191970)
+- Shadow Grey (#222227)
+- Dark Slate (#1a1a1a) - Default
+- Shadow Black (#090909)
+- Deep Black (#000000)
 
 ## Usage
 
 1. **Configure Settings**:
    - Right-click the extension icon → Options
-   - Or navigate to `chrome://extensions/` → Find "Dark New Tab Homepage" → Click "Options"
+   - Or navigate to `chrome://extensions/` → Find "Shadow Tab" → Click "Options"
 
 2. **Set Your URL**:
    - Enter your desired new tab URL

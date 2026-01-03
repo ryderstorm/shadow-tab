@@ -1,6 +1,6 @@
 # Local Development Setup
 
-This guide will help you set up the Dark New Tab Homepage Chrome extension for local development.
+This guide will help you set up the Shadow Tab Chrome extension for local development.
 
 ## Prerequisites
 

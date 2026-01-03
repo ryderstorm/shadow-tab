@@ -1,4 +1,4 @@
-import { Page, Locator } from "@playwright/test";
+import { Page, Locator, expect } from "@playwright/test";
 
 /**
  * Page Object Model for the New Tab page.
@@ -47,9 +47,11 @@ export class NewTabPage {
    * @param delay - Delay in milliseconds before redirect
    */
   async waitForRedirect(delay: number): Promise<void> {
-    // Wait for the delay plus a small buffer
-    await this.page.waitForTimeout(delay + 100);
-    // Wait for navigation to complete
+    const startingUrl = this.page.url();
+
+    await expect
+      .poll(() => this.page.url(), { timeout: delay + 2000 })
+      .not.toBe(startingUrl);
     await this.page.waitForLoadState("load");
   }
 

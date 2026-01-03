@@ -17,16 +17,9 @@ test.describe("Extension Installation and Setup", () => {
   });
 
   test("should initialize service worker", async ({ context, extensionId }) => {
-    // Note: This extension doesn't have a service worker (no background script in manifest)
-    // So we verify that extension ID is valid instead
-    // In a real extension with service worker, we would check:
-    // const serviceWorkers = context.serviceWorkers();
-    // expect(serviceWorkers.length).toBeGreaterThan(0);
-    // expect(serviceWorkers[0].url()).toContain(extensionId);
-
-    // For this extension, we verify the extension ID is valid
-    expect(extensionId).toBeDefined();
-    expect(extensionId).toMatch(/^[a-z]{32}$/);
+    const serviceWorkers = context.serviceWorkers();
+    expect(serviceWorkers.length).toBeGreaterThan(0);
+    expect(serviceWorkers[0].url()).toContain(extensionId);
 
     // Verify extension is accessible by checking manifest
     const page = await context.newPage();
@@ -69,7 +62,7 @@ test.describe("Extension Installation and Setup", () => {
     expect(response?.status()).toBe(200);
 
     // Verify page title
-    await expect(page).toHaveTitle(/New Tab/i);
+    await expect(page).toHaveTitle(/Shadow Tab/i);
 
     // Verify key elements exist (loading might be hidden initially)
     await expect(page.locator("#loading")).toBeAttached();
@@ -88,7 +81,7 @@ test.describe("Extension Installation and Setup", () => {
     expect(response?.status()).toBe(200);
 
     // Verify page title
-    await expect(page).toHaveTitle(/Dark New Tab Homepage - Options/i);
+    await expect(page).toHaveTitle(/Shadow Tab - Options/i);
 
     // Verify key form elements exist
     await expect(page.locator("#url-input")).toBeVisible();

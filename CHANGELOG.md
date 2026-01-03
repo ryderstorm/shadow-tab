@@ -111,7 +111,6 @@
   ([#2](https://github.com/ryderstorm/dark-homepage-newtab/pull/2),
   [`4e2390b`](https://github.com/ryderstorm/dark-homepage-newtab/commit/4e2390be7e57a9fb12a75997d136f10be991feda))
 
-
 ## v0.1.0 (2025-12-07)
 
 - Initial Release

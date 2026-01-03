@@ -1,4 +1,5 @@
-.temp
+# Temporary directories
+.temp/
 
 # Node.js dependencies
 node_modules/

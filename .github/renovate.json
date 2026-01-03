@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Renovate Bot configuration for Dark New Tab Homepage Chrome extension",
+  "description": "Renovate Bot configuration for the Shadow Tab Chrome extension",
   "extends": ["config:best-practices", ":semanticCommits", ":enablePreCommit"],
   "labels": ["dependencies"],
   "reviewersFromCodeOwners": true,

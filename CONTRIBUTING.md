@@ -1,6 +1,6 @@
-# Contributing to Dark New Tab Homepage
+# Contributing to Shadow Tab
 
-Thank you for your interest in contributing to Dark New Tab Homepage! This document provides guidelines and instructions for contributing to the project.
+Thank you for your interest in contributing to Shadow Tab! This document provides guidelines and instructions for contributing to the project.
 
 ## Development Workflow
 
@@ -227,4 +227,4 @@ pre-commit run --all-files
 
 If you have questions about contributing, please open an issue or contact the maintainers.
 
-Thank you for contributing to Dark New Tab Homepage!
+Thank you for contributing to Shadow Tab!
