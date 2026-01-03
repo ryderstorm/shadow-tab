@@ -15,8 +15,8 @@ test.describe("End-to-End User Flow", () => {
     await optionsPage.fillBackgroundColor("#ff0000");
     await optionsPage.clickSave();
 
-    // Wait for save to complete
-    await optionsPage.page.waitForTimeout(500);
+    // Ensure save has completed before opening a new tab (avoid race)
+    await expect(optionsPage.getSuccessMessage()).toBeVisible({ timeout: 2000 });
 
     // Open new tab normally with chrome://newtab
     await newTabPage.openNewTab();
@@ -48,7 +48,6 @@ test.describe("End-to-End User Flow", () => {
 
     // Open first new tab
     await newTabPage.openNewTab();
-    await newTabPage.page.waitForTimeout(100);
 
     // Verify settings persist by reading storage
     const storedSettings = await getStorage([
@@ -66,7 +65,6 @@ test.describe("End-to-End User Flow", () => {
       await import("./page-objects/NewTabPage")
     ).NewTabPage(page2);
     await newTabPage2.openNewTab();
-    await page2.waitForTimeout(100);
 
     // Verify settings still persist
     const storedSettings2 = await getStorage([
@@ -92,7 +90,18 @@ test.describe("End-to-End User Flow", () => {
     await optionsPage.fillRedirectDelay(1000);
     await optionsPage.fillBackgroundColor("#ff0000");
     await optionsPage.clickSave();
-    await optionsPage.page.waitForTimeout(500);
+
+    await expect
+      .poll(
+        async () =>
+          await getStorage(["url", "redirectDelay", "backgroundColor"]),
+        { timeout: 3000 }
+      )
+      .toEqual({
+        url: TEST_URLS.EXAMPLE_COM,
+        redirectDelay: 1000,
+        backgroundColor: "#ff0000",
+      });
 
     // Verify first change is saved
     let storedSettings = await getStorage([
@@ -110,7 +119,18 @@ test.describe("End-to-End User Flow", () => {
     await optionsPage.fillRedirectDelay(2000);
     await optionsPage.fillBackgroundColor("#0000ff");
     await optionsPage.clickSave();
-    await optionsPage.page.waitForTimeout(500);
+
+    await expect
+      .poll(
+        async () =>
+          await getStorage(["url", "redirectDelay", "backgroundColor"]),
+        { timeout: 3000 }
+      )
+      .toEqual({
+        url: TEST_URLS.HTTPBIN_ORG,
+        redirectDelay: 2000,
+        backgroundColor: "#0000ff",
+      });
 
     // Verify second change is saved
     storedSettings = await getStorage([
@@ -128,7 +148,18 @@ test.describe("End-to-End User Flow", () => {
     await optionsPage.fillRedirectDelay(500);
     await optionsPage.fillBackgroundColor("#00ff00");
     await optionsPage.clickSave();
-    await optionsPage.page.waitForTimeout(500);
+
+    await expect
+      .poll(
+        async () =>
+          await getStorage(["url", "redirectDelay", "backgroundColor"]),
+        { timeout: 3000 }
+      )
+      .toEqual({
+        url: TEST_URLS.GOOGLE_COM,
+        redirectDelay: 500,
+        backgroundColor: "#00ff00",
+      });
 
     // Verify third change is saved
     storedSettings = await getStorage([
@@ -226,12 +257,9 @@ test.describe("End-to-End User Flow", () => {
     // Open new tab
     await newTabPage.openNewTab();
 
-    // Wait a bit to ensure page has loaded
-    await page.waitForTimeout(100);
-
     // Verify loading animation is hidden (no delay means no animation)
     const loadingElement = newTabPage.getLoadingAnimation();
-    await expect(loadingElement).toBeHidden();
+    await expect(loadingElement).toBeHidden({ timeout: 2000 });
 
     // Wait for redirect (should be immediate)
     await page.waitForURL(testUrl, { timeout: 2000 });
@@ -253,7 +281,9 @@ test.describe("End-to-End User Flow", () => {
     await optionsPage.fillRedirectDelay(1000);
     await optionsPage.fillBackgroundColor("#ff0000");
     await optionsPage.clickSave();
-    await optionsPage.page.waitForTimeout(500);
+    await expect(optionsPage.getSuccessMessage()).toBeVisible({
+      timeout: 2000,
+    });
 
     // Open new tab
     await newTabPage.openNewTab();

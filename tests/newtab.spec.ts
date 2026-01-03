@@ -42,7 +42,6 @@ test.describe("New Tab Page Functionality", () => {
   test("should not display loading animation when delay is 0ms", async ({
     setStorage,
     newTabPage,
-    page,
   }) => {
     // Set delay to 0
     await setStorage({
@@ -54,12 +53,9 @@ test.describe("New Tab Page Functionality", () => {
     // Open new tab (after storage is set)
     await newTabPage.openNewTab();
 
-    // Wait a bit to ensure page has loaded
-    await page.waitForTimeout(100);
-
     // Verify loading animation is hidden
     const loadingElement = newTabPage.getLoadingAnimation();
-    await expect(loadingElement).toBeHidden();
+    await expect(loadingElement).toBeHidden({ timeout: 2000 });
   });
 
   test("should redirect to configured URL after delay", async ({
