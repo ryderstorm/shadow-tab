@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Shadow Tab",
-  "description": "Zero-flash, stealth-mode redirects for your dark-mode dashboard. A sleek new tab extension that eliminates the white flash with customizable colors and timing.",
+  "description": "A sleek, stealth-mode new tab extension with zero-flash redirects for a dark-mode browser. Includes customizable colors and timing.",
   "version": "0.1.1",
   "permissions": ["storage"],
   "chrome_url_overrides": {
